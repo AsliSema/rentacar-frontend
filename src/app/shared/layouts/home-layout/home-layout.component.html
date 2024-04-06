@@ -1,0 +1,14 @@
+<div class="min-vh-100 d-flex flex-column">
+    <app-navbar [navItems]="navItems" [title]="title" [endContentTemplate]="navbarEndContent">
+        <ng-template #navbarEndContent>
+            <button class=" btn btn-outline-primary " type="button" data-bs-target="#loginModal" data-bs-toggle="modal">
+                Login
+            </button>
+        </ng-template>
+    </app-navbar>
+    <main class="container-fluid flex-grow-1 justify-content-center align-items-center text-align-center my-3">
+        <ng-content></ng-content>
+    </main>
+    <app-footer class="mt-5"></app-footer>
+</div>
+

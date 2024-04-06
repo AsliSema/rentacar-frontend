@@ -1,0 +1,18 @@
+<app-home-layout>
+    <div class="d-flex flex-column justify-content-center align-items-center app-overlay">
+        <h1>Welcome to our rental gallery!</h1>
+        <app-button variant="warning">View Models</app-button>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <app-brands-list-menu [initialSelectedBrandId]="selectedBrandId" (selectBrand)="onSelectBrand($event)"></app-brands-list-menu>
+        </div>
+        <div class="col-8">
+            {{selectedBrandId}}
+            App model card list
+        </div>
+    </div>
+
+
+</app-home-layout>

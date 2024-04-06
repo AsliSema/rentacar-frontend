@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a *ngIf="title" class="navbar-brand" [routerLink]="title.routerLink">{{title.text}}</a>
+        <app-button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation"
+            variant="light">
+            <span class="navbar-toggler-icon text-light"></span>
+        </app-button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" *ngFor="let navItem of navItems">
+                    <a *ngIf="!isUrl(navItem.link); else urlLink" class="nav-link" aria-current="page"
+                        [routerLink]="!isUrl(navItem.link) ? navItem.link : null" routerLinkActive="active">{{
+                        navItem.label }}</a>
+                    <ng-template #urlLink>
+                        <a class="nav-link" aria-current="page" [href]="navItem.link">{{
+                            navItem.label
+                            }}</a>
+                    </ng-template>
+                </li>
+            </ul>
+            <!--   <ng-content></ng-content> -->
+            <ng-container *ngIf="endContentTemplate">
+                <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+</nav>
