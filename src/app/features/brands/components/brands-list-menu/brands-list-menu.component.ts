@@ -31,7 +31,7 @@ export class BrandsListMenuComponent implements OnInit{
   constructor(private brandsService: BrandsService, private change: ChangeDetectorRef){} //İkinci yol
 
   ngOnInit(): void {
-      this.getBrandList();
+    this.getBrandList();
   }
 
   getBrandList(){

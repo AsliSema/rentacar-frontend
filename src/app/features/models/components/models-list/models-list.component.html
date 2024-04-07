@@ -1,0 +1,155 @@
+<!-- Birinci opsiyon -->
+<!-- <div class="container">
+  <div class="d-flex flex-wrap">
+    <div class="col-md-4 col-lg-3" *ngFor="let model of models">
+      <div class="card mb-3" style="width: 18rem;">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ model.brandName }}</h5>
+          <img src="..." class="card-img-top" alt="...">
+          <div class="d-flex justify-content-center">
+            <a href="#" class="btn btn-primary">Detaylı Bilgi İçin Tıklayınız</a>
+          </div>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapse' + model.id" aria-expanded="false" [attr.aria-controls]="'flush-collapse' + model.id">
+                Modeli
+              </button>
+            </h2>
+            <div [id]="'flush-collapse' + model.id" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">{{ model.name }}</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapse' + model.id + 'Two'" aria-expanded="false" [attr.aria-controls]="'flush-collapse' + model.id + 'Two'">
+                Üretim Yılı
+              </button>
+            </h2>
+            <div [id]="'flush-collapse' + model.id + 'Two'" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Sonradan Eklenecek!</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapse' + model.id + 'Three'" aria-expanded="false" [attr.aria-controls]="'flush-collapse' + model.id + 'Three'">
+                Vites Türü
+              </button>
+            </h2>
+            <div [id]="'flush-collapse' + model.id + 'Three'" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">{{ model.transmissionName }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container">
+  <div class="d-flex flex-wrap">
+    <div class="col-md-4 col-lg-3" *ngFor="let model of models">
+      <div class="card mb-3" style="width: 18rem;">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ model.brandName }}</h5>
+          <img src="..." class="card-img-top" alt="...">
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#accordion-collapse' + model.id" aria-expanded="false" [attr.aria-controls]="'accordion-collapse' + model.id">
+                Modeli
+              </button>
+            </h2>
+            <div [id]="'accordion-collapse' + model.id" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">{{ model.name }}</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#accordion-collapse' + model.id + 'Two'" aria-expanded="false" [attr.aria-controls]="'accordion-collapse' + model.id + 'Two'">
+                Üretim Yılı
+              </button>
+            </h2>
+            <div [id]="'accordion-collapse' + model.id + 'Two'" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Sonradan Eklenecek!</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#accordion-collapse' + model.id + 'Three'" aria-expanded="false" [attr.aria-controls]="'accordion-collapse' + model.id + 'Three'">
+                Vites Türü
+              </button>
+            </h2>
+            <div [id]="'accordion-collapse' + model.id + 'Three'" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">{{ model.transmissionName }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-12">
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-primary">Detaylı Bilgi İçin Tıklayınız</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Üçüncü opsiyon -->
+<!-- <div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let model of models">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{model.brandName}}</h5>
+          <img src="..." class="card-img-top" alt="...">
+          <div class="d-flex justify-content-center">
+            <a href="#" class="btn btn-primary">Detaylı Bilgi İçin Tıklayınız</a>
+          </div>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Modeli
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body"> {{model.name}} </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Vites Türü
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body"> {{model.transmissionName}} </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                Üretim Yılı
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body"> Sonra eklenecek! </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+

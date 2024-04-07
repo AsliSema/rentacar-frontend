@@ -4,7 +4,7 @@ import { HomePageComponent } from './home-page.component';
 export const homeRoutes: Routes = [
     {
         path: '',
-        pathMatch: 'full',
+        //pathMatch: 'full',
         component: HomePageComponent
     }
 ];
