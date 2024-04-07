@@ -22,7 +22,8 @@ export class HomeLayoutComponent {
     {label: "Contact", link: "mailto: a@gmail.com"},
     {label: "Management", link: "/management"},
     {label: "Brands Management", link: "/management/brands"},
-    {label: "Models", link: "/models"}
+    {label: "Models", link: "/models"},
+    {label: "Users", link: "/users"}
   ]
 
 

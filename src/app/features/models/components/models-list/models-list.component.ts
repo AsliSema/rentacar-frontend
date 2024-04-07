@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ModelListItemDto } from '../../models/model-list-item-dto';
 import { ModelService } from '../../services/model.service';
-import { ButtonComponent } from '../../../../shared/components/button/button.component';
+
 
 @Component({
   selector: 'app-models-list',
