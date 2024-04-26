@@ -1,0 +1,25 @@
+<!-- FormsModule -->
+<!-- <label for="nameInput">Brand Name</label> -->
+<!-- <input [(ngModel)]="nameInput" type="text" placeholder="Brand Name">-->
+<!-- ngModel input her değiştiğinde ilgili state in otomatik değişmesini sağlar.-->
+
+<!-- ReactiveFormsModule -->
+<form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+    <!-- <small *ngIf="errorMessage">{{errorMessage}}</small> -->
+
+    @if (formMessage) {
+        <!-- <small>{{formMessage}}</small> -->
+<!--         <div class="alert alert-warning" role="alert">
+            {{formMessage}}
+        </div> -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{formMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    }
+
+    <div class="">
+        <input formControlName="name" type="text" placeholder="Brand Name">
+        <app-button type="submit" variant="secondary">Add Brand</app-button>
+    </div>
+</form>

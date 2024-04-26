@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BrandListItemDto } from '../models/brand-list-item-dto';
 import { environment } from '../../../../environments/environment';
+import { BrandAddItemDto } from '../models/brand-add-item-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,9 @@ export class BrandsService {
   getBrands(): Observable<BrandListItemDto[]>{
     return this.httpClient.get<BrandListItemDto[]>(this.controllerUrl)
   }
+
+  createBrand(brand: BrandAddItemDto): Observable<void> {
+    return this.httpClient.post<void>(this.controllerUrl, brand);
+  }
+
 }

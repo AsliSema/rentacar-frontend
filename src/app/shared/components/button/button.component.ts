@@ -12,6 +12,7 @@ import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter} from '
 export class ButtonComponent {
 
   //State
+  @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() variant: ButtonVariant = 'primary';
   @Output() click = new EventEmitter<MouseEvent>();
 
@@ -39,4 +40,5 @@ type ButtonVariant =
   | 'success'
   | 'danger'
   | 'info'
-  |'light';
+  |'light'
+  | 'dark';

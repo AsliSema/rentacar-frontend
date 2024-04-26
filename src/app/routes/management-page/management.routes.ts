@@ -6,7 +6,7 @@ import { ManagementBrandsPageComponent } from './management-brands-page/manageme
 export const managementRoutes: Routes = [
     {
         path: 'management',
-        canActivate: [authGuard], //Angular Guard yapıları ile ilgili route'a giriş yapmadan önce çalışacak yapılar
+        //canActivate: [authGuard], //Angular Guard yapıları ile ilgili route'a giriş yapmadan önce çalışacak yapılar
         data: {
             requiredRoles: ['Admin']
         },
