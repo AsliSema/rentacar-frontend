@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ManagementPageComponent } from './management-page.component';
 import { authGuard } from '../../shared/guards/auth.guard';
 import { ManagementBrandsPageComponent } from './management-brands-page/management-brands-page.component';
+import { ManagementCreateBrandPageComponent } from './management-brands-page/management-create-brand-page/management-create-brand-page.component';
 
 export const managementRoutes: Routes = [
     {
@@ -15,6 +16,10 @@ export const managementRoutes: Routes = [
             {
                 path: 'brands',
                 component: ManagementBrandsPageComponent
+            },
+            {
+                path: 'brands/create',
+                component: ManagementCreateBrandPageComponent
             }
         ]
     }
