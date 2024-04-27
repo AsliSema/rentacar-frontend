@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component} from '@angular/core';
 import { BrandListBaseComponent } from '../brand-list-base/brand-list-base.component';
 import { CommonModule } from '@angular/common';
 import { TableDirective } from '../../../../shared/directives/table.directive';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { RouterModule } from '@angular/router';
+import { BrandsService } from '../../services/brands.service';
 
 @Component({
   selector: 'app-brands-list-table',
@@ -13,4 +14,21 @@ import { RouterModule } from '@angular/router';
   styleUrl: './brands-list-table.component.scss'
 })
 export class BrandsListTableComponent extends BrandListBaseComponent{
+
+  constructor(brandsService: BrandsService, change: ChangeDetectorRef, private brandServise: BrandsService){
+    super(brandsService, change);
+  }
+
+/* deleteBrand(brandId: number) {
+  this.brandServise.deleteBrandById(brandId).subscribe(brand => this.brandServise.getBrands);
+} */
+
+deleteBrand(brandId: number) {
+  this.brandServise.deleteBrandById(brandId).subscribe({
+    complete: () => {
+      this.getBrandList();
+    }
+  });
+}
+
 }
