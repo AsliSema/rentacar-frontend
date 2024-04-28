@@ -4,6 +4,9 @@ import { Observable, catchError, tap } from 'rxjs';
 import { BrandListItemDto } from '../models/brand-list-item-dto';
 import { environment } from '../../../../environments/environment';
 import { BrandAddItemDto } from '../models/brand-add-item-dto';
+import { GetBrandByIdResponse } from '../models/get-brand-by-id-response-dto';
+import { UpdatedBrandResponse } from '../models/brand-updated-response-dto';
+import { UpdateBrandRequest } from '../models/brand-update-request-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +30,16 @@ export class BrandsService {
 
   getBrands(): Observable<BrandListItemDto[]>{
     return this.httpClient.get<BrandListItemDto[]>(this.controllerUrl)
+  }
+
+  getBrandById(id: number): Observable<GetBrandByIdResponse>{
+    const url = `${this.controllerUrl}/${id}`; 
+    return this.httpClient.get<GetBrandByIdResponse>(url);
+  }
+
+  updateBrandById(id: number, request: UpdateBrandRequest): Observable<UpdatedBrandResponse>{
+    const url = `${this.controllerUrl}/${id}`; 
+    return this.httpClient.put<UpdatedBrandResponse>(url, request);
   }
 
   createBrand(brand: BrandAddItemDto): Observable<void> {

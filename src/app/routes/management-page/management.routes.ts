@@ -3,6 +3,7 @@ import { ManagementPageComponent } from './management-page.component';
 import { authGuard } from '../../shared/guards/auth.guard';
 import { ManagementBrandsPageComponent } from './management-brands-page/management-brands-page.component';
 import { ManagementCreateBrandPageComponent } from './management-brands-page/management-create-brand-page/management-create-brand-page.component';
+import { ManagementEditBrandPageComponent } from './management-brands-page/management-edit-brand-page/management-edit-brand-page.component';
 
 export const managementRoutes: Routes = [
     {
@@ -20,6 +21,10 @@ export const managementRoutes: Routes = [
             {
                 path: 'brands/create',
                 component: ManagementCreateBrandPageComponent
+            },
+            {
+                path: 'brands/edit/:brandId',
+                component: ManagementEditBrandPageComponent
             }
         ]
     }

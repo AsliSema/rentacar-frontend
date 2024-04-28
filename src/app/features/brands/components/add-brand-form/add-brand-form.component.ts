@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { BrandsService } from '../../services/brands.service';
 import { BrandAddItemDto } from '../../models/brand-add-item-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-brand-form',
@@ -24,7 +25,8 @@ export class AddBrandFormComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder, 
     private brandService: BrandsService, 
-    private change: ChangeDetectorRef
+    private change: ChangeDetectorRef,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class AddBrandFormComponent implements OnInit{
   }
 
   add(){
-    //create gelmiyo service in içinden
+    //create gelmiyor service in içinden open-api-generator kullanınca
     const request: BrandAddItemDto = {
       name: this.form.value.name
     }
@@ -56,6 +58,10 @@ export class AddBrandFormComponent implements OnInit{
         this.formMessage = 'Brand add successfully!';
         this.form.reset();
         this.change.markForCheck();
+
+        setTimeout(()=>{
+          this.router.navigate(['/management/brands']);
+        }, 2000)
       }
     });
 

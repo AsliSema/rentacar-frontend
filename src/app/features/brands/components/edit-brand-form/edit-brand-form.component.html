@@ -1,0 +1,16 @@
+<!-- ReactiveFormsModule -->
+<form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+    <!-- <small *ngIf="errorMessage">{{errorMessage}}</small> -->
+
+    @if (formMessage) {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{formMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    }
+
+    <div class="">
+        <input formControlName="name" type="text" placeholder="Brand Name">
+        <app-button type="submit" variant="secondary">Edit Brand</app-button>
+    </div>
+</form>
