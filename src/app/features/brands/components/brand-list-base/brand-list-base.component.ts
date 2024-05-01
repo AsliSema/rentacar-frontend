@@ -24,7 +24,7 @@ export class BrandListBaseComponent {
     this.brandsService = brandsService;
   } */
 
-  constructor(private brandsService: BrandsService, private change: ChangeDetectorRef){} //İkinci yol
+  constructor(protected brandsService: BrandsService, private change: ChangeDetectorRef){} //İkinci yol
 
 
 

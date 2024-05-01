@@ -15,16 +15,14 @@ import { BrandsService } from '../../services/brands.service';
 })
 export class BrandsListTableComponent extends BrandListBaseComponent{
 
-  constructor(brandsService: BrandsService, change: ChangeDetectorRef, private brandServise: BrandsService){
-    super(brandsService, change);
-  }
+
 
 /* deleteBrand(brandId: number) {
   this.brandServise.deleteBrandById(brandId).subscribe(brand => this.brandServise.getBrands);
 } */
 
 deleteBrand(brandId: number) {
-  this.brandServise.deleteBrandById(brandId).subscribe({
+  this.brandsService.deleteBrandById(brandId).subscribe({
     complete: () => {
       this.getBrandList();
     }
