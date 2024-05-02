@@ -9,14 +9,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { BusinessProblemDetails } from './business-problem-details';
+import { ValidationProblemDetails } from './validation-problem-details';
 
 
-export interface CreateCarRequest { 
-    modelYear: number;
-    plate: string;
-    state: number;
-    dailyPrice: number;
-    modelId: number;
-    userId: number;
-}
+/**
+ * @type Get400Response
+ * @export
+ */
+export type Get400Response = BusinessProblemDetails | ValidationProblemDetails;
 

@@ -15,15 +15,32 @@ import { Observable }                                        from 'rxjs';
 
 import { CreateTransmissionRequest } from '../model/models';
 import { CreatedTransmissionResponse } from '../model/models';
-import { GetAll400Response } from '../model/models';
+import { Get400Response } from '../model/models';
 import { GetAllTransmissionResponse } from '../model/models';
+import { GetTransmissionResponse } from '../model/models';
+import { Result } from '../model/models';
+import { UpdateTransmissionRequest } from '../model/models';
+import { UpdateTransmissionResponse } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface AddRequestParams {
+export interface DeleteRequestParams {
+    id: number;
+}
+
+export interface Add1RequestParams {
     createTransmissionRequest: CreateTransmissionRequest;
+}
+
+export interface GetRequestParams {
+    id: number;
+}
+
+export interface UpdateRequestParams {
+    id: number;
+    updateTransmissionRequest: UpdateTransmissionRequest;
 }
 
 
@@ -36,12 +53,33 @@ export interface TransmissionControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add(requestParameters: AddRequestParams, extraHttpRequestParams?: any): Observable<CreatedTransmissionResponse>;
+    _delete(requestParameters: DeleteRequestParams, extraHttpRequestParams?: any): Observable<Result>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    add1(requestParameters: Add1RequestParams, extraHttpRequestParams?: any): Observable<CreatedTransmissionResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    get(requestParameters: GetRequestParams, extraHttpRequestParams?: any): Observable<GetTransmissionResponse>;
 
     /**
      * 
      * 
 */
-    getAll(extraHttpRequestParams?: any): Observable<Array<GetAllTransmissionResponse>>;
+    getAll1(extraHttpRequestParams?: any): Observable<Array<GetAllTransmissionResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    update(requestParameters: UpdateRequestParams, extraHttpRequestParams?: any): Observable<UpdateTransmissionResponse>;
 
 }

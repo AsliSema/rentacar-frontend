@@ -15,15 +15,32 @@ import { Observable }                                        from 'rxjs';
 
 import { CreateCarRequest } from '../model/models';
 import { CreatedCarResponse } from '../model/models';
-import { GetAll400Response } from '../model/models';
+import { Get400Response } from '../model/models';
 import { GetAllCarResponse } from '../model/models';
+import { GetCarResponse } from '../model/models';
+import { Result } from '../model/models';
+import { UpdateCarRequest } from '../model/models';
+import { UpdateCarResponse } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add3RequestParams {
+export interface Add4RequestParams {
     createCarRequest: CreateCarRequest;
+}
+
+export interface Delete3RequestParams {
+    id: number;
+}
+
+export interface GetCarRequestParams {
+    id: number;
+}
+
+export interface Update3RequestParams {
+    id: number;
+    updateCarRequest: UpdateCarRequest;
 }
 
 
@@ -36,12 +53,33 @@ export interface CarControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add3(requestParameters: Add3RequestParams, extraHttpRequestParams?: any): Observable<CreatedCarResponse>;
+    add4(requestParameters: Add4RequestParams, extraHttpRequestParams?: any): Observable<CreatedCarResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    delete3(requestParameters: Delete3RequestParams, extraHttpRequestParams?: any): Observable<Result>;
 
     /**
      * 
      * 
 */
-    getAll3(extraHttpRequestParams?: any): Observable<Array<GetAllCarResponse>>;
+    getAll4(extraHttpRequestParams?: any): Observable<Array<GetAllCarResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getCar(requestParameters: GetCarRequestParams, extraHttpRequestParams?: any): Observable<GetCarResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    update3(requestParameters: Update3RequestParams, extraHttpRequestParams?: any): Observable<UpdateCarResponse>;
 
 }

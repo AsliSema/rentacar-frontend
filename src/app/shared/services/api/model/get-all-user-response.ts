@@ -11,12 +11,11 @@
  */
 
 
-export interface CreateCarRequest { 
-    modelYear: number;
-    plate: string;
-    state: number;
-    dailyPrice: number;
-    modelId: number;
-    userId: number;
+export interface GetAllUserResponse { 
+    id?: number;
+    firstName?: string;
+    lastName?: string;
+    companyName?: string;
+    createdDate?: string;
 }
 

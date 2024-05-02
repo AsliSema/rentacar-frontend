@@ -13,4 +13,7 @@ export * from './model-controller.serviceInterface';
 export * from './transmission-controller.service';
 import { TransmissionControllerService } from './transmission-controller.service';
 export * from './transmission-controller.serviceInterface';
-export const APIS = [BrandControllerService, CarControllerService, FuelControllerService, ModelControllerService, TransmissionControllerService];
+export * from './user-controller.service';
+import { UserControllerService } from './user-controller.service';
+export * from './user-controller.serviceInterface';
+export const APIS = [BrandControllerService, CarControllerService, FuelControllerService, ModelControllerService, TransmissionControllerService, UserControllerService];

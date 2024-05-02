@@ -15,15 +15,32 @@ import { Observable }                                        from 'rxjs';
 
 import { CreateFuelRequest } from '../model/models';
 import { CreatedFuelResponse } from '../model/models';
-import { GetAll400Response } from '../model/models';
+import { Get400Response } from '../model/models';
 import { GetAllFuelResponse } from '../model/models';
+import { GetFuelResponse } from '../model/models';
+import { Result } from '../model/models';
+import { UpdateFuelRequest } from '../model/models';
+import { UpdateFuelResponse } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add2RequestParams {
+export interface Add3RequestParams {
     createFuelRequest: CreateFuelRequest;
+}
+
+export interface Delete2RequestParams {
+    id: number;
+}
+
+export interface Get2RequestParams {
+    id: number;
+}
+
+export interface Update2RequestParams {
+    id: number;
+    updateFuelRequest: UpdateFuelRequest;
 }
 
 
@@ -36,12 +53,33 @@ export interface FuelControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add2(requestParameters: Add2RequestParams, extraHttpRequestParams?: any): Observable<CreatedFuelResponse>;
+    add3(requestParameters: Add3RequestParams, extraHttpRequestParams?: any): Observable<CreatedFuelResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    delete2(requestParameters: Delete2RequestParams, extraHttpRequestParams?: any): Observable<Result>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    get2(requestParameters: Get2RequestParams, extraHttpRequestParams?: any): Observable<GetFuelResponse>;
 
     /**
      * 
      * 
 */
-    getAll2(extraHttpRequestParams?: any): Observable<Array<GetAllFuelResponse>>;
+    getAll3(extraHttpRequestParams?: any): Observable<Array<GetAllFuelResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    update2(requestParameters: Update2RequestParams, extraHttpRequestParams?: any): Observable<UpdateFuelResponse>;
 
 }

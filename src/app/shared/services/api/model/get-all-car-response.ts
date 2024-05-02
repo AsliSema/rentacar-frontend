@@ -19,5 +19,9 @@ export interface GetAllCarResponse {
     dailyPrice?: number;
     modelId?: number;
     modelName?: string;
+    userId?: number;
+    userFirstName?: string;
+    userLastName?: string;
+    email?: string;
 }
 

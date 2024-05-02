@@ -15,15 +15,32 @@ import { Observable }                                        from 'rxjs';
 
 import { CreateModelRequest } from '../model/models';
 import { CreatedModelResponse } from '../model/models';
-import { GetAll400Response } from '../model/models';
+import { Get400Response } from '../model/models';
 import { GetAllModelResponse } from '../model/models';
+import { GetModelResponse } from '../model/models';
+import { Result } from '../model/models';
+import { UpdateModelRequest } from '../model/models';
+import { UpdateModelResponse } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add1RequestParams {
+export interface Add2RequestParams {
     createModelRequest: CreateModelRequest;
+}
+
+export interface Delete1RequestParams {
+    id: number;
+}
+
+export interface Get1RequestParams {
+    id: number;
+}
+
+export interface Update1RequestParams {
+    id: number;
+    updateModelRequest: UpdateModelRequest;
 }
 
 
@@ -36,12 +53,33 @@ export interface ModelControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add1(requestParameters: Add1RequestParams, extraHttpRequestParams?: any): Observable<CreatedModelResponse>;
+    add2(requestParameters: Add2RequestParams, extraHttpRequestParams?: any): Observable<CreatedModelResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    delete1(requestParameters: Delete1RequestParams, extraHttpRequestParams?: any): Observable<Result>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    get1(requestParameters: Get1RequestParams, extraHttpRequestParams?: any): Observable<GetModelResponse>;
 
     /**
      * 
      * 
 */
-    getAll1(extraHttpRequestParams?: any): Observable<Array<GetAllModelResponse>>;
+    getAll2(extraHttpRequestParams?: any): Observable<Array<GetAllModelResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    update1(requestParameters: Update1RequestParams, extraHttpRequestParams?: any): Observable<UpdateModelResponse>;
 
 }

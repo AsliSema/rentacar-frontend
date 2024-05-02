@@ -15,15 +15,32 @@ import { Observable }                                        from 'rxjs';
 
 import { CreateBrandRequest } from '../model/models';
 import { CreatedBrandResponse } from '../model/models';
-import { GetAll400Response } from '../model/models';
+import { Get400Response } from '../model/models';
 import { GetAllBrandResponse } from '../model/models';
+import { GetBrandResponse } from '../model/models';
+import { Result } from '../model/models';
+import { UpdateBrandRequest } from '../model/models';
+import { UpdateBrandResponse } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add4RequestParams {
+export interface Add5RequestParams {
     createBrandRequest: CreateBrandRequest;
+}
+
+export interface Delete4RequestParams {
+    id: number;
+}
+
+export interface GetBrandRequestParams {
+    id: number;
+}
+
+export interface Update4RequestParams {
+    id: number;
+    updateBrandRequest: UpdateBrandRequest;
 }
 
 
@@ -36,12 +53,33 @@ export interface BrandControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add4(requestParameters: Add4RequestParams, extraHttpRequestParams?: any): Observable<CreatedBrandResponse>;
+    add5(requestParameters: Add5RequestParams, extraHttpRequestParams?: any): Observable<CreatedBrandResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    delete4(requestParameters: Delete4RequestParams, extraHttpRequestParams?: any): Observable<Result>;
 
     /**
      * 
      * 
 */
-    getAll4(extraHttpRequestParams?: any): Observable<Array<GetAllBrandResponse>>;
+    getAll5(extraHttpRequestParams?: any): Observable<Array<GetAllBrandResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getBrand(requestParameters: GetBrandRequestParams, extraHttpRequestParams?: any): Observable<GetBrandResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    update4(requestParameters: Update4RequestParams, extraHttpRequestParams?: any): Observable<UpdateBrandResponse>;
 
 }

@@ -18,5 +18,6 @@ export interface CreatedCarResponse {
     state?: number;
     dailyPrice?: number;
     modelId?: number;
+    userId?: number;
 }
 
