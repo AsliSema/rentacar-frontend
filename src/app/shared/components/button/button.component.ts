@@ -14,6 +14,9 @@ export class ButtonComponent {
   //State
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() variant: ButtonVariant = 'primary';
+  @Input() outline = false;
+  @Input() size: ButtonSize = 'md';
+  @Input() px: number = 0;
   @Output() click = new EventEmitter<MouseEvent>();
 
   //Lifecycle
@@ -27,7 +30,19 @@ export class ButtonComponent {
 
   //Helpers
   get buttonClass(): string {
-    return `btn btn-${this.variant}`;
+    let classes = `btn btn-${this.variant}`;
+    if (this.outline) {
+      classes = `btn btn-outline-${this.variant}`;
+    }
+    if (this.size === 'sm') {
+      classes += ' btn-sm';
+    } else if (this.size === 'lg') {
+      classes += ' btn-lg';
+    }
+    if(this.px){
+      classes += ` px-${this.px}`;
+    }
+    return classes;
   }
 
 
@@ -42,3 +57,6 @@ type ButtonVariant =
   | 'info'
   |'light'
   | 'dark';
+
+
+type ButtonSize = 'sm' | 'md' | 'lg';
