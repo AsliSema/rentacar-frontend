@@ -11,7 +11,7 @@ import { Router, RouterLink } from '@angular/router';
     standalone: true,
     templateUrl: './edit-brand-form.component.html',
     styleUrl: './edit-brand-form.component.scss',
-    imports: [CommonModule, ReactiveFormsModule, ButtonComponent]
+    imports: [CommonModule, ReactiveFormsModule, ButtonComponent, ButtonComponent]
 })
 export class EditBrandFormComponent implements OnInit{
   @Input() brandId !: number;  
@@ -29,7 +29,8 @@ export class EditBrandFormComponent implements OnInit{
 
   createFrom(){
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      newName: ['', [Validators.required]]
     })
   }
 
@@ -44,7 +45,7 @@ export class EditBrandFormComponent implements OnInit{
 
   edit() {
     const request: UpdateBrandRequest = {
-      name: this.form.value.name
+      name: this.form.value.newName
     }
     this.brandsService.updateBrandById(this.brandId, request).subscribe({
       complete: () => {

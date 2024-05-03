@@ -1,7 +1,7 @@
 <div class="card mt-5 mb-4">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">Brands Table</h3>
-        <app-button routerLink="/management/brands/create" variant="info" size="md" [outline]="true" [px]="5">Create Brand</app-button>
+        <app-button routerLink="/management/brands/create" variant="primary" size="md" [outline]="true" [px]="5">Create Brand</app-button>
     </div>
     <!-- /.card-header -->
     <div class="card-body p-0">
@@ -25,7 +25,7 @@
                     <td>
                         <div class="d-flex justify-content-end">
                             <app-button [routerLink]="['/management/brands/edit', brand.id]" variant="warning" size="sm" [outline]="true" [px]=4>Edit</app-button>
-                            <app-button class="ms-3" (click)="deleteBrand(brand.id)" variant="danger" size="sm" [outline]="true" [px]=4>Delete</app-button>
+                            <app-button class="ms-3" (click)="deleteBrand(brand.id)" variant="danger" size="sm" [outline]="true" [px]=3>Delete</app-button>
                         </div>
                     </td>
                 </tr>
