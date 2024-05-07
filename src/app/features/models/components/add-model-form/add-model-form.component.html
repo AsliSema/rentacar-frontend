@@ -1,0 +1,51 @@
+@if (formMessage) {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{formMessage}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card card-warning card-outline mb-4 mt-5">
+                <div class="card-header d-flex justify-content-center py-3">
+                    <div class="card-title h3">Create Model Dashboard</div>
+                </div>
+                <!-- Start: ReactiveFormsModule -->
+                <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+                    <div class="card-body">
+                        <div class="row m-3">
+                            <label class="col-sm-2 col-form-label">Model Name</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" formControlName="name" type="text" placeholder="Model Name">
+                            </div>
+                        </div>
+                        <div class="row m-3">
+                            <label class="col-sm-2 col-form-label">Brand Id</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" formControlName="brandId" type="text" placeholder="Brand Id">
+                            </div>
+                        </div>
+                        <div class="row m-3">
+                            <label class="col-sm-2 col-form-label">Fuel Id</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" formControlName="fuelId" type="text" placeholder="Fuel Id">
+                            </div>
+                        </div>
+                        <div class="row m-3">
+                            <label class="col-sm-2 col-form-label">Transmission Id</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" formControlName="transmissionId" type="text" placeholder="Transmission Id">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end py-3">
+                        <app-button type="submit" variant="primary" size="sm" [outline]="true" [px]=4>Create Model</app-button>
+                    </div>
+                </form>
+                <!-- End: ReactiveFormsModule -->
+            </div>
+        </div>
+    </div>
+</div>
+

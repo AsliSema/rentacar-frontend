@@ -1,0 +1,59 @@
+<!-- Start: Form Message  -->
+@if (formMessage) {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{formMessage}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<!-- End: Form Message -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card card-warning card-outline mb-4 mt-5">
+                <div class="card-header d-flex justify-content-center py-3">
+                    <div class="card-title h3">Update Model Dashboard</div>
+                </div>
+                <!-- Start: ReactiveFormsModule -->
+                <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+                    <div class="card-body my-3">
+                        <div class="row mb-3 ">
+                            <label class="col-sm-4 col-form-label">Old Model Name</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" formControlName="name" type="text" placeholder="Model Name" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-4 col-form-label">Model Name</label>
+                            <div class="col-sm-8">
+                                <input formControlName="newName" class="form-control" type="text" placeholder="Model Name">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-4 col-form-label">Brand Id</label>
+                            <div class="col-sm-8">
+                                <input formControlName="brandId" class="form-control" type="text" placeholder="Brand Id">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-4 col-form-label">Fuel Id</label>
+                            <div class="col-sm-8">
+                                <input formControlName="fuelId" class="form-control" type="text" placeholder="Fuel Id">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-4 col-form-label">Transmission Id</label>
+                            <div class="col-sm-8">
+                                <input formControlName="transmissionId" class="form-control" type="text" placeholder="Transmission Id">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end py-3">
+                        <app-button type="submit" variant="warning" size="sm" [outline]="true" [px]=4>Update Model</app-button>
+                    </div>
+
+                </form>
+                <!-- End: ReactiveFormsModule -->
+            </div>
+        </div>
+    </div>
+</div>
