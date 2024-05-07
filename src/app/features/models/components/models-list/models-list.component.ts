@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ModelListItemDto } from '../../models/model-list-item-dto';
 import { ModelService } from '../../services/model.service';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { ModelsListBaseComponent } from '../models-list-base/models-list-base.component';
 
 
 @Component({
@@ -13,21 +14,6 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
   styleUrl: './models-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ModelsListComponent implements OnInit{
-  models !: ModelListItemDto[];
-
-  constructor(private modelService: ModelService, private change: ChangeDetectorRef){}
-
-  ngOnInit(){
-    this.getModelList();
-  }
-
-  getModelList(){
-    this.modelService.getModels().subscribe((response)=>{
-      this.models = response;
-
-      this.change.markForCheck()
-    })
-  }
+export class ModelsListComponent extends ModelsListBaseComponent implements OnInit{
 
 }
