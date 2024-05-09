@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { Router } from '@angular/router';
-import { CarsService } from '../../services/cars.service';
+import { CarService } from '../../services/car.service';
 import { CarAddItemDto } from '../../models/car-add-item-dto';
 
 @Component({
@@ -19,7 +19,7 @@ export class AddCarFormComponent implements OnInit{
 
   constructor (
     private formBuilder: FormBuilder,
-    private carService: CarsService,
+    private carService: CarService,
     private change: ChangeDetectorRef,
     private router: Router
   ){}
@@ -34,6 +34,7 @@ export class AddCarFormComponent implements OnInit{
       modelYear:['', [Validators.required, Validators.min(2000)]],
       state: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(3)]],
       dailyPrice: ['', [Validators.required]],
+      color: ['', [Validators.required]],
       modelId: ['', [Validators.required]],
       userId: ['', [Validators.required]]
     })
@@ -45,6 +46,7 @@ export class AddCarFormComponent implements OnInit{
       plate: this.form.value.plate,
       state: this.form.value.state,
       dailyPrice: this.form.value.dailyPrice,
+      color: this.form.value.color,
       modelId: this.form.value.modelId,
       userId: this.form.value.userId
     }

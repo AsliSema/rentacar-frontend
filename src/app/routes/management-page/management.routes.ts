@@ -9,6 +9,10 @@ import { AddModelFormComponent } from '../../features/models/components/add-mode
 import { UpdateModelFormComponent } from '../../features/models/components/update-model-form/update-model-form.component';
 import { ManagementUpdateModelPageComponent } from './management-models-page/management-update-model-page/management-update-model-page.component';
 import { AddCarFormComponent } from '../../features/cars/components/add-car-form/add-car-form.component';
+import { ManagementCreateCarPageComponent } from './management-car-page/management-create-car-page/management-create-car-page.component';
+import { ManagementCarPageComponent } from './management-car-page/management-car-page.component';
+import { UpdateCarFormComponent } from '../../features/cars/components/update-car-form/update-car-form.component';
+import { ManagementUpdateCarPageComponent } from './management-car-page/management-update-car-page/management-update-car-page.component';
 
 export const managementRoutes: Routes = [
     {
@@ -44,8 +48,16 @@ export const managementRoutes: Routes = [
                 component: ManagementUpdateModelPageComponent
             },
             {
+                path: "cars",
+                component: ManagementCarPageComponent
+            },
+            {
                 path: "cars/create",
-                component: AddCarFormComponent
+                component: ManagementCreateCarPageComponent
+            },
+            {
+                path: "cars/update/:carId",
+                component: ManagementUpdateCarPageComponent
             }
         ]
     }
