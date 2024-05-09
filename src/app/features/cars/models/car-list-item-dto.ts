@@ -4,6 +4,7 @@ export interface CarListItemDto{
     plate: string,
     state: number,
     dailyPrice: number,
+    color: string,
     modelId: number,
     modelName: string,
     userId: number,

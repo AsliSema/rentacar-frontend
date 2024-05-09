@@ -3,6 +3,7 @@ export interface UpdateCarRequest{
     plate: string,
     state: number,
     dailyPrice: number,
+    color: string,
     modelId: number,
     userId: number
 }
