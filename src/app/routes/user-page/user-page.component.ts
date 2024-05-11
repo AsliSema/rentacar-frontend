@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HomeLayoutComponent } from '../../shared/layouts/home-layout/home-layout.component';
-import { UsersListComponent } from '../../features/users/components/users-list/users-list.component';
+import { UsersListComponent } from '../../features/users/components/users-list-table/users-list-table.component';
 
 @Component({
   selector: 'app-user-page',
