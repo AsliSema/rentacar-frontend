@@ -35,8 +35,7 @@ export class AddCarFormComponent implements OnInit{
       state: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(3)]],
       dailyPrice: ['', [Validators.required]],
       color: ['', [Validators.required]],
-      modelId: ['', [Validators.required]],
-      userId: ['', [Validators.required]]
+      modelId: ['', [Validators.required]]
     })
   }
 
@@ -47,8 +46,7 @@ export class AddCarFormComponent implements OnInit{
       state: this.form.value.state,
       dailyPrice: this.form.value.dailyPrice,
       color: this.form.value.color,
-      modelId: this.form.value.modelId,
-      userId: this.form.value.userId
+      modelId: this.form.value.modelId
     }
     this.carService.createCar(request).subscribe({
       next: (response) => {

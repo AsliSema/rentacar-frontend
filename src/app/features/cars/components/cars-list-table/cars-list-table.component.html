@@ -17,10 +17,6 @@
                     <th scoope="col">State</th>
                     <th scoope="col">Price</th>
                     <th scoope="col">Color</th>
-                    <th scope="col">User Id</th>
-                    <th scope="col">User Full Name</th>
-                    <th scope="col">User Email</th>
-                    <th scope="col">User Phone Number</th>
                     <th></th>
                 </tr>
             </thead>
@@ -36,10 +32,6 @@
                     <td scope="row">{{car.state}}</td>
                     <td scope="row">{{car.dailyPrice}}</td>
                     <td scope="row">{{car.color}}</td>
-                    <td scope="row">{{car.userId}}</td>
-                    <td scope="row">{{car.userFirstName}} {{car.userLastName}}</td>
-                    <td scope="row">{{car.userEmail}}</td>
-                    <td scope="row">{{car.userPhoneNumber}}</td>
                     <td>
                         <div class="d-flex justify-content-end">
                             <app-button [routerLink]="['/management/cars/update', car.id]" variant="warning" size="sm" [outline]="true" [px]=4>Update</app-button>

@@ -6,10 +6,5 @@ export interface CarListItemDto{
     dailyPrice: number,
     color: string,
     modelId: number,
-    modelName: string,
-    userId: number,
-    userFirstName: string,
-    userLastName: string,
-    userEmail: string,
-    userPhoneNumber: string
+    modelName: string
 }

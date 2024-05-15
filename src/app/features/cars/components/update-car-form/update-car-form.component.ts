@@ -63,8 +63,7 @@ export class UpdateCarFormComponent implements OnInit{
         state: car.state,
         dailyPrice: car.dailyPrice,
         color: car.color,
-        modelId: car.modelId,
-        userId: car.userId
+        modelId: car.modelId
       })
     })
   }
@@ -78,8 +77,7 @@ export class UpdateCarFormComponent implements OnInit{
       state: this.form.value.state,
       dailyPrice: this.form.value.dailyPrice,
       color: this.form.value.color,
-      modelId: this.form.value.modelId,
-      userId: this.form.value.userId
+      modelId: this.form.value.modelId
     }
     this.carService.updateCarById(this.carId, request).subscribe({
       complete: () => {

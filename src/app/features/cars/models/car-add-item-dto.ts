@@ -4,6 +4,5 @@ export interface CarAddItemDto{
     state: number,
     dailyPrice: number,
     color: string,
-    modelId: number,
-    userId: number
+    modelId: number
 }
