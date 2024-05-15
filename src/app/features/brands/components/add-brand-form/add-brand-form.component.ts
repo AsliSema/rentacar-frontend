@@ -67,23 +67,37 @@ export class AddBrandFormComponent implements OnInit{
 
   }
 
+
   onFormSubmit() {
-    if(this.form.invalid){
-      const nameErrors = this.form.get('name')?.errors;
-      if (nameErrors) {
-        if (nameErrors['required']) {
-          this.formMessage = 'Brand name is required.';
-        } else if (nameErrors['minlength']) {
-          this.formMessage = 'Brand name must be at least 2 characters.';
-        } else if (nameErrors['maxlength']) {
-          this.formMessage = 'Brand name must be at most 30 characters.';
-        } else {
-          this.formMessage = null;
-        }
-      }
+    if (this.form.invalid) {
+      this.formMessage = this.getErrorMessage();
       return;
     }
-    this.add()
+    this.add();
+  }
+  
+  private getErrorMessage(): string | null {
+    const controls = this.form.controls;
+  
+    for (const controlName in controls) {
+      const control = controls[controlName];
+      if (control.invalid) {
+        if (control.errors?.['required']) {
+          return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required.`;
+        }
+        if (control.errors?.['minlength']) {
+          return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} must be at least ${control.errors['minlength'].requiredLength} characters.`;
+        }
+        if (control.errors?.['maxlength']) {
+          return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} must be at most ${control.errors['maxlength'].requiredLength} characters.`;
+        }
+        if (control.errors?.['min']) {
+          return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} must be the minimum ${control.errors['min'].min}.`;
+        }
+      }
+    }
+  
+    return null;
   }
 
 }

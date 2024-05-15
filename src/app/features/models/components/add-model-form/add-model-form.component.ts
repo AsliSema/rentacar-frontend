@@ -66,39 +66,37 @@ export class AddModelFormComponent implements OnInit{
     });
   }
 
-  onFormSubmit() {
-    if(this.form.invalid){
-      const nameErrors = this.form.get('name')?.errors;
-      if (nameErrors) {
-        if (nameErrors['required']) {
-          this.formMessage = 'Model name is required.';
-        } else if (nameErrors['minlength']) {
-          this.formMessage = 'Model name must be at least 2 characters.';
-        } else if (nameErrors['maxlength']) {
-          this.formMessage = 'Model name must be at most 30 characters.';
-        } else {
-          this.formMessage = null;
-        }
-      }
 
-      const brandIdControl = this.form.get('brandId');
-      if (brandIdControl?.errors && brandIdControl.errors['required']) {
-        this.formMessage = 'Brand is required.';
-      }
-  
-      const fuelIdControl = this.form.get('fuelId');
-      if (fuelIdControl?.errors && fuelIdControl.errors['required']) {
-        this.formMessage = 'Fuel type is required.';
-      }
-  
-      const transmissionIdControl = this.form.get('transmissionId');
-      if (transmissionIdControl?.errors && transmissionIdControl.errors['required']) {
-        this.formMessage = 'Transmission type is required.';
-      }
-      
+  onFormSubmit() {
+    if (this.form.invalid) {
+      this.formMessage = this.getErrorMessage();
       return;
     }
-    this.add()
+    this.add();
+  }
+  
+  private getErrorMessage(): string | null {
+    const controls = this.form.controls;
+  
+    for (const controlName in controls) {
+      const control = controls[controlName];
+      if (control.invalid) {
+        if (control.errors?.['required']) {
+          return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required.`;
+        }
+        if (control.errors?.['minlength']) {
+          return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} must be at least ${control.errors['minlength'].requiredLength} characters.`;
+        }
+        if (control.errors?.['maxlength']) {
+          return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} must be at most ${control.errors['maxlength'].requiredLength} characters.`;
+        }
+        if (control.errors?.['min']) {
+          return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} must be the minimum ${control.errors['min'].min}.`;
+        }
+      }
+    }
+  
+    return null;
   }
 
 
