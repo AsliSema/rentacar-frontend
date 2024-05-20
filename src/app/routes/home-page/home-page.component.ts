@@ -4,12 +4,12 @@ import { HomeLayoutComponent } from '../../shared/layouts/home-layout/home-layou
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { BrandsListMenuComponent } from '../../features/brands/components/brands-list-menu/brands-list-menu.component';
 import { BrandListItemDto } from '../../features/brands/models/brand-list-item-dto';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, HomeLayoutComponent, ButtonComponent, BrandsListMenuComponent],
+  imports: [CommonModule, HomeLayoutComponent, ButtonComponent, BrandsListMenuComponent, RouterModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

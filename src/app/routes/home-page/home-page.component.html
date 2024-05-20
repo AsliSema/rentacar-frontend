@@ -1,10 +1,10 @@
 <app-home-layout>
     <div class="d-flex flex-column justify-content-center align-items-center app-overlay">
         <h1>Welcome to our rental gallery!</h1>
-        <app-button variant="warning" >View Models</app-button>
+        <app-button variant="warning" [routerLink]="['/models']">Explore Our Models</app-button>
     </div>
 
-    <div class="row">
+<!--     <div class="row">
         <div class="col-4">
             <app-brands-list-menu [initialSelectedBrandId]="selectedBrandId" (selectBrand)="onSelectBrand($event)"></app-brands-list-menu>
         </div>
@@ -12,7 +12,7 @@
             {{selectedBrandId}}
             App model card list
         </div>
-    </div>
+    </div> -->
 
 
 </app-home-layout>
