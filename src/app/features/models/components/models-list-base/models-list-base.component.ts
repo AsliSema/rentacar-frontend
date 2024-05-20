@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModelListItemDto } from '../../models/model-list-item-dto';
 import { ModelService } from '../../services/model.service';
 import { CommonModule } from '@angular/common';
@@ -13,9 +13,15 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 })
 export class ModelsListBaseComponent implements OnInit{
 
-  models !: ModelListItemDto[];
 
-  constructor(protected modelService: ModelService, private change: ChangeDetectorRef){}
+  @Input() initialSelectedModelId: number | null = null; 
+  @Output() selectModel = new EventEmitter<ModelListItemDto | null>();
+
+  models !: ModelListItemDto[];
+  selectedModel: ModelListItemDto | null = null;
+  initialSelectedModelIndex: number | null = null;
+
+  constructor(protected modelService: ModelService, protected change: ChangeDetectorRef){}
 
   ngOnInit(){
     this.getModelList();
@@ -25,8 +31,25 @@ export class ModelsListBaseComponent implements OnInit{
     this.modelService.getModels().subscribe((response)=>{
       this.models = response;
 
+      console.log("hey to youu!")
+
+      if (this.initialSelectedModelId) {
+        this.selectedModel =
+          this.models.find(
+            (model) => model.id === this.initialSelectedModelId
+          ) ?? null;
+        this.initialSelectedModelIndex = this.models.findIndex(
+          (model) => model.id === this.initialSelectedModelId
+        );
+      }
+
       this.change.markForCheck()
     })
+  }
+
+  onSelectModel(model: ModelListItemDto) {
+    this.selectedModel = this.selectedModel?.id !== model.id ? model : null;
+    this.selectModel.emit(this.selectedModel);
   }
 
 }

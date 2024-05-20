@@ -1,3 +1,31 @@
 <app-home-layout>
-<app-models-list></app-models-list>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="mb-5 mt-5">
+                    <div class="align-items-center">Transmission Type</div>
+                    <app-transmissions-list-menu [initialSelectedTransmissionId]="selectedTransmissionId"
+                        (selectTransmission)="onSelectTransmission($event)"></app-transmissions-list-menu>
+                    <!-- {{selectedTransmissionId}} -->
+                </div>
+                <div class="mb-5">
+                    <div class="align-items-center">Fuel Type</div>
+                    <app-fuels-list-menu [initialSelectedFuelId]="selectedFuelId"
+                        (selectFuel)="onSelectFuel($event)"></app-fuels-list-menu>
+                    <!-- {{selectedFuelId}} -->
+                </div>
+                <div class="mb-5">
+                    <div class="align-items-center">Brand Name</div>
+                    <app-brands-list-menu [initialSelectedBrandId]="selectedBrandId"
+                        (selectBrand)="onSelectBrand($event)"></app-brands-list-menu>
+                    <!-- {{selectedBrandId}} -->
+                </div>
+            </div>
+            <div class="col-9 mt-5">
+                <app-models-list [transmissionId]="selectedTransmissionId" [fuelId]="selectedFuelId" [brandId]="selectedBrandId">
+                </app-models-list>
+            </div>
+        </div>
+    </div>
+
 </app-home-layout>
