@@ -31,7 +31,6 @@ export class UpdateModelFormComponent implements OnInit{
   createFrom(){
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
-      newName:  ['', [Validators.required]],
       brandId: ['', [Validators.required]],
       fuelId: ['', [Validators.required]],
       transmissionId: ['', [Validators.required]]
@@ -41,7 +40,13 @@ export class UpdateModelFormComponent implements OnInit{
   getModel() {
     this.modelService.getModelById(this.modelId).subscribe((model)=>{
       this.form.patchValue({
-        name: model.name
+        name: model.name,
+        brandId: model.brandId,
+        brandName: model.brandName,
+        fuelId: model.fuelId,
+        fuelName: model.fuelName,
+        transmissionId: model.transmissionId,
+        transmissionName: model.transmissionName
       })
     })
   }
@@ -49,7 +54,7 @@ export class UpdateModelFormComponent implements OnInit{
 
   update() {
     const request: UpdateModelRequest = {
-      name: this.form.value.newName,
+      name: this.form.value.name,
       brandId: this.form.value.brandId,
       fuelId: this.form.value.fuelId,
       transmissionId: this.form.value.transmissionId

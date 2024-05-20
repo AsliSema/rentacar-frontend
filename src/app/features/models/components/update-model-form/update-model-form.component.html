@@ -16,16 +16,16 @@
                 <!-- Start: ReactiveFormsModule -->
                 <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
                     <div class="card-body my-3">
-                        <div class="row mb-3 ">
+                        <!-- <div class="row mb-3 ">
                             <label class="col-sm-4 col-form-label">Old Model Name</label>
                             <div class="col-sm-8">
                                 <input class="form-control" formControlName="name" type="text" placeholder="Model Name" readonly>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row mb-3">
                             <label class="col-sm-4 col-form-label">Model Name</label>
                             <div class="col-sm-8">
-                                <input formControlName="newName" class="form-control" type="text" placeholder="Model Name">
+                                <input formControlName="name" class="form-control" type="text" placeholder="Model Name">
                             </div>
                         </div>
                         <div class="row mb-3">
