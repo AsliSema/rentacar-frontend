@@ -15,15 +15,21 @@
                 <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
                     <div class="card-body">
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Plate</label>
+                            <label class="col-sm-2 col-form-label">Model Id</label>
                             <div class="col-sm-10">
-                                <input class="form-control" formControlName="plate" type="text" placeholder="Plate">
+                                <input class="form-control" formControlName="modelId" type="text" placeholder="Model Id">
                             </div>
                         </div>
                         <div class="row m-3">
                             <label class="col-sm-2 col-form-label">Model Year</label>
                             <div class="col-sm-10">
                                 <input class="form-control" formControlName="modelYear" type="text" placeholder="Model Year">
+                            </div>
+                        </div>
+                        <div class="row m-3">
+                            <label class="col-sm-2 col-form-label">Plate</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" formControlName="plate" type="text" placeholder="Plate">
                             </div>
                         </div>
                         <div class="row m-3">
@@ -39,15 +45,21 @@
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Color</label>
+                            <label class="col-sm-2 col-form-label">Location</label>
                             <div class="col-sm-10">
-                                <input class="form-control" formControlName="color" type="text" placeholder="Color">
+                                <input class="form-control" formControlName="location" type="text" placeholder="Location">
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Model Id</label>
+                            <label class="col-sm-2 col-form-label">Kilometer</label>
                             <div class="col-sm-10">
-                                <input class="form-control" formControlName="modelId" type="text" placeholder="Model Id">
+                                <input class="form-control" formControlName="kilometer" type="text" placeholder="Kilometer">
+                            </div>
+                        </div>
+                        <div class="row m-3">
+                            <label class="col-sm-2 col-form-label">Color</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" formControlName="color" type="text" placeholder="Color">
                             </div>
                         </div>
                     </div>

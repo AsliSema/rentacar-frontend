@@ -32,10 +32,12 @@ export class AddCarFormComponent implements OnInit{
     this.form = this.formBuilder.group({
       plate: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(8) ]],
       modelYear:['', [Validators.required, Validators.min(2000)]],
-      state: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(3)]],
+      state: ['', Validators.required],
       dailyPrice: ['', [Validators.required]],
       color: ['', [Validators.required]],
-      modelId: ['', [Validators.required]]
+      modelId: ['', [Validators.required]],
+      location: ['', Validators.required],
+      kilometer: ['', Validators.required]
     })
   }
 
@@ -46,7 +48,9 @@ export class AddCarFormComponent implements OnInit{
       state: this.form.value.state,
       dailyPrice: this.form.value.dailyPrice,
       color: this.form.value.color,
-      modelId: this.form.value.modelId
+      modelId: this.form.value.modelId,
+      location: this.form.value.location,
+      kilometer: this.form.value.kilometer
     }
     this.carService.createCar(request).subscribe({
       next: (response) => {
