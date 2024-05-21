@@ -26,6 +26,10 @@
             <div class="mt-2">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <div class="me-md-0 my-auto"> araba fiyatı <span>/day</span></div>
+                <app-button variant="warning" size="md" [outline]="true" [px]=4 [routerLink]="['/models/modelId', model.id]">Rent Now</app-button>  
+
+               
+                <app-button variant="warning" size="md" [outline]="true" [px]=4 [routerLink]="['/management/models/modelId', model.id]">Rent Now</app-button>  
                 <button type="button" class="btn btn-outline-primary px-4"> Rent Now </button>
               </div>
             </div>

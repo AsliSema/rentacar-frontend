@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ModelsListComponent } from '../../features/models/components/models-list/models-list.component';
 import { HomeLayoutComponent } from '../../shared/layouts/home-layout/home-layout.component';
 import { TransmissionsListMenuComponent } from '../../features/transmissions/component/transmissions-list-menu/transmissions-list-menu.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TransmissionListItemDto } from '../../features/transmissions/models/transmission-list-item.dto';
 import { FuelsListMenuComponent } from '../../features/fuels/components/fuels-list-menu/fuels-list-menu.component';
 import { FuelListItemDto } from '../../features/fuels/models/fuel-list-item.dto';
@@ -13,7 +13,7 @@ import { BrandListItemDto } from '../../features/brands/models/brand-list-item-d
 @Component({
   selector: 'app-model-page',
   standalone: true,
-  imports: [CommonModule, HomeLayoutComponent, ModelsListComponent, TransmissionsListMenuComponent, FuelsListMenuComponent, BrandsListMenuComponent],
+  imports: [CommonModule, HomeLayoutComponent, ModelsListComponent, TransmissionsListMenuComponent, FuelsListMenuComponent, BrandsListMenuComponent, RouterModule],
   templateUrl: './model-page.component.html',
   styleUrl: './model-page.component.scss'
 })

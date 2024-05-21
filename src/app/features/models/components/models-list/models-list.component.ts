@@ -4,12 +4,13 @@ import { ModelListItemDto } from '../../models/model-list-item-dto';
 import { ModelService } from '../../services/model.service';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { ModelsListBaseComponent } from '../models-list-base/models-list-base.component';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-models-list',
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, RouterModule],
   templateUrl: './models-list.component.html',
   styleUrl: './models-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

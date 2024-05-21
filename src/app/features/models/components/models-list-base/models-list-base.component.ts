@@ -31,8 +31,6 @@ export class ModelsListBaseComponent implements OnInit{
     this.modelService.getModels().subscribe((response)=>{
       this.models = response;
 
-      console.log("hey to youu!")
-
       if (this.initialSelectedModelId) {
         this.selectedModel =
           this.models.find(
