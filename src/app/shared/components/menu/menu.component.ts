@@ -17,16 +17,6 @@ export type MenuItem = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
-/*   @Input() items: MenuItem[] = [];
-
-  selectedItemIndex: number | null = null;
-  
-  onItemClick(event: MouseEvent, menuItem:MenuItem, itemIndex: number){
-    this.selectedItemIndex = this.selectedItemIndex != itemIndex ? itemIndex : null;
-    if(menuItem.click){
-      menuItem.click(event);
-    }
-  } */
 
   @Input() items: MenuItem[] = [];
   @Input() selectedItemIndex: number | null = null;

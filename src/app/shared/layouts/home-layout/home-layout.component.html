@@ -1,7 +1,7 @@
-<div class="min-vh-100 d-flex flex-column">
-    <app-navbar [navItems]="navItems" [title]="title" [endContentTemplate]="navbarEndContent">
+<div class="min-vh-100 d-flex flex-column ">
+    <app-navbar class="shadow-sm p-1 mb-3 bg-body-tertiary rounded" [navItems]="navItems" [title]="title" [endContentTemplate]="navbarEndContent">
         <ng-template #navbarEndContent>
-            <button class=" btn btn-outline-primary " type="button" data-bs-target="#loginModal" data-bs-toggle="modal">
+            <button class=" btn btn-outline-warning " type="button" data-bs-target="#loginModal" data-bs-toggle="modal">
                 Login
             </button>
         </ng-template>

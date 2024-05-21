@@ -16,7 +16,7 @@ import { ManagementUpdateCarPageComponent } from './management-car-page/manageme
 import { ManagementUsersPageComponent } from './management-users-page/management-users-page.component';
 import { ManagementCreateUserPageComponent } from './management-users-page/management-create-user-page/management-create-user-page.component';
 import { ManagementUpdateUserPageComponent } from './management-users-page/management-update-user-page/management-update-user-page.component';
-import { ModelDetailPageComponent } from '../model-detail-page/model-detail-page/model-detail-page.component';
+import { ModelDetailPageComponent } from '../models-page/model-detail-page/model-detail-page.component';
 
 export const managementRoutes: Routes = [
     {
