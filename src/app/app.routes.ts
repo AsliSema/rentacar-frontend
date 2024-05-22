@@ -4,6 +4,7 @@ import { NotFoundPageComponent } from './routes/not-found-page/not-found-page.co
 import { homeRoutes } from './routes/home-page/home.routes';
 import { userRoutes } from './routes/user-page/user.routes';
 import { modelsRoutes } from './routes/models-page/models.routes';
+import { registerRoutes } from './routes/register-page/register.routes';
 
 
 export const routes: Routes = [
@@ -11,6 +12,7 @@ export const routes: Routes = [
     ...managementRoutes,
     ...modelsRoutes,
     ...userRoutes,
+    ...registerRoutes,
     {
         path: '**',
         component: NotFoundPageComponent

@@ -1,9 +1,9 @@
 <div class="min-vh-100 d-flex flex-column ">
     <app-navbar class="shadow-sm p-1 mb-3 bg-body-tertiary rounded" [navItems]="navItems" [title]="title" [endContentTemplate]="navbarEndContent">
         <ng-template #navbarEndContent>
-            <button class=" btn btn-outline-warning " type="button" data-bs-target="#loginModal" data-bs-toggle="modal">
-                Login
-            </button>
+            <div class="card-header d-flex justify-content-end">
+                <app-button [routerLink]="['/register']" variant="warning" size="md" [outline]="true">Sign Up</app-button>
+            </div>
         </ng-template>
     </app-navbar>
     <main class="container-fluid flex-grow-1 justify-content-center align-items-center text-align-center my-3">
