@@ -3,6 +3,8 @@ import { NavItem, NavTitle, NavbarComponent } from '../../components/navbar/navb
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../features/auths/services/auth.service';
+import { TokenService } from '../../../features/auths/services/token/token.service';
 
 
 @Component({
@@ -13,6 +15,24 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home-layout.component.scss'
 })
 export class HomeLayoutComponent {
+
+  token : string | null = null;
+
+
+  constructor(private tokenService: TokenService) {}
+
+
+  ngOnInit(){
+    this.token = this.tokenService.token;
+  }
+
+  logout() {
+    this.tokenService.clearToken();
+    //location.reload(); 
+    location.href = "/";
+  }
+
+
   title : NavTitle = {
     text: "RentACar",
     routerLink: "/"
@@ -21,9 +41,12 @@ export class HomeLayoutComponent {
   navItems : NavItem[] = [
     {label: "Home", link: "/"},
     {label: "About", link: "/about"},
-    {label: "Contact", link: "mailto: a@gmail.com"},
-    {label: "Management", link: "/management"},
     {label: "Models", link: "/models"},
+    {label: "Contact", link: "mailto: a@gmail.com"}
+  ]
+
+  managementItems: NavItem[] = [
+    {label: "Management", link: "/management"},
     {label: "Users Management", link: "/management/users"},
     {label: "Cars Management", link: "/management/cars"},
     {label: "Brands Management", link: "/management/brands"},

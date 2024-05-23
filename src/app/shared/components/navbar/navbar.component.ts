@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, TemplateRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from '../button/button.component';
+import { TokenService } from '../../../features/auths/services/token/token.service';
 
 /* export interface NavItemInterface{ //Bu şekilde de interface tanımlayarak da olur.
   label: string;
@@ -31,7 +32,20 @@ export type NavTitle = {
 export class NavbarComponent {
   @Input() title: NavTitle;
   @Input() navItems : NavItem[] = [];
+  @Input() managementItems : NavItem[] = [];
   @Input() endContentTemplate ?: TemplateRef<any>;
+  
+  token : string | null = null;
+
+
+  constructor(private tokenService: TokenService) {}
+
+
+  ngOnInit(){
+    this.token = this.tokenService.token;
+  }
+
+
 
   isUrl(url: string): boolean{
     return (

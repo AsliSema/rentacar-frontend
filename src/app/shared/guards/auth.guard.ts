@@ -1,12 +1,25 @@
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { TokenService } from '../../features/auths/services/token/token.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
 
-  if (!localStorage.getItem('token')) return false;
+  //if (!localStorage.getItem('token')) return false;
 
-  const token = localStorage.getItem('token');
+  //const token = localStorage.getItem('token');
   // if (token.expire < Date.now())
   //   return false;
+
+
+  const tokenService = inject(TokenService);
+  const router = inject(Router);
+
+  const token = tokenService.token;
+
+  if (!token ) {
+    router.navigate(['/login']);
+    return false;
+  }
 
   const requiredRoles = route.data['requiredRoles'];
   // if (!token.roles.some((role) => requiredRoles.includes(role))) {
