@@ -21,26 +21,32 @@
                 </li>
             </ul>
             <!--   <ng-content></ng-content> -->
-            @if (token) {
-                <div class="dropdown-center mx-3">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Managements
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li class="nav-item" *ngFor="let navItem of managementItems">
-                        <a *ngIf="!isUrl(navItem.link); else urlLink" class="dropdown-item" aria-current="page"
-                            [routerLink]="!isUrl(navItem.link) ? navItem.link : null"
-                            >{{
-                            navItem.label }}</a>
-                        <ng-template #urlLink>
-                            <a class="dropdown-item"  [href]="navItem.link">{{
-                                navItem.label
-                                }}</a>
-                        </ng-template>
-                    </li>
-                    </ul>
-                </div>
+            @if (token && role === "ADMIN") {
+                    <div class="dropdown-center mx-3">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Managements
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item" *ngFor="let navItem of managementItems">
+                            <a *ngIf="!isUrl(navItem.link); else urlLink" class="dropdown-item" aria-current="page"
+                                [routerLink]="!isUrl(navItem.link) ? navItem.link : null"
+                                >{{
+                                navItem.label }}</a>
+                            <ng-template #urlLink>
+                                <a class="dropdown-item"  [href]="navItem.link">{{
+                                    navItem.label
+                                    }}</a>
+                            </ng-template>
+                        </li>
+                        </ul>
+                    </div>
             }
+
+            @if (token && role === "USER") {
+                <app-button class="mx-1"  [routerLink]="['/management/users/update']" variant="secondary" size="md" [outline]="true">Update Personal Info</app-button>
+                <app-button class="mx-1" [routerLink]="['/login']" variant="secondary" size="md" [outline]="true">Update License Info</app-button>
+                <app-button class="mx-1" [routerLink]="['/login']" variant="secondary" size="md" [outline]="true">Past Rentals</app-button>
+        }
             <ng-container *ngIf="endContentTemplate">
                 <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
             </ng-container>

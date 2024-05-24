@@ -3,6 +3,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from '../button/button.component';
 import { TokenService } from '../../../features/auths/services/token/token.service';
+import { AuthService } from '../../../features/auths/services/auth.service';
 
 /* export interface NavItemInterface{ //Bu şekilde de interface tanımlayarak da olur.
   label: string;
@@ -36,13 +37,17 @@ export class NavbarComponent {
   @Input() endContentTemplate ?: TemplateRef<any>;
   
   token : string | null = null;
+  role: string | null = null;
 
 
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService, private authService: AuthService) {}
 
 
   ngOnInit(){
     this.token = this.tokenService.token;
+    this.role = this.authService.role;
+
+    console.log(this.authService.role)
   }
 
 

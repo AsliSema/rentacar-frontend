@@ -3,7 +3,7 @@
         <ng-template #navbarEndContent>
             @if (token) {
                 <div class="card-header d-flex justify-content-end">
-                    <app-button (click)="logout()"  variant="warning" size="md" [outline]="true">Log out</app-button>
+                    <app-button (click)="logout()"  variant="warning" size="md" class="mx-3" [outline]="true">Log out</app-button>
                 </div>
             }
             @if (!token) {

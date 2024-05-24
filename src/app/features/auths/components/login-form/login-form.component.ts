@@ -53,6 +53,7 @@ export class LoginFormComponent {
     this.authService.loginUser(request).subscribe({
       next: (response) => {
         this.tokenService.token = response.bareerToken as string
+        this.authService.role = response.role as string
         console.log(response) //sil sonra
 
       },
