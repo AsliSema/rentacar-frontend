@@ -27,5 +27,12 @@ export class AuthService {
   }
 
 
+  set role(role: string){
+    localStorage.setItem('role', role);
+  }
+
+  get role(){
+    return localStorage.getItem('role') as string;
+  }
 
 }

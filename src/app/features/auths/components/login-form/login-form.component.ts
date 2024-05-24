@@ -53,7 +53,7 @@ export class LoginFormComponent {
     this.authService.loginUser(request).subscribe({
       next: (response) => {
         this.tokenService.token = response.bareerToken as string
-        console.log(response)
+        console.log(response) //sil sonra
 
       },
       error: (error) => {
@@ -62,7 +62,7 @@ export class LoginFormComponent {
       },
       complete: () => {
         this.formMessage = 'You have signed in successfully!';
-        this.form.reset();
+        //this.form.reset();
         this.change.markForCheck();
 
         setTimeout(()=>{ 

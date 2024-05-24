@@ -5,6 +5,7 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { Router } from '@angular/router';
 import { UserAddItemDto } from '../../models/user-add-item-dto';
 import { UserService } from '../../services/user.service';
+import { AuthService } from '../../../auths/services/auth.service';
 
 @Component({
   selector: 'app-add-user-form',
@@ -19,7 +20,7 @@ export class AddUserFormComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder, 
-    private userService: UserService, 
+    private authService: AuthService,
     private change: ChangeDetectorRef,
     private router: Router
   ){}
@@ -59,7 +60,7 @@ export class AddUserFormComponent implements OnInit{
 
 
 
-    this.userService.createUser(request).subscribe({
+    this.authService.registerUser(request).subscribe({
       next: (response) => {
         console.log(response)
       },
