@@ -1,9 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, TemplateRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from '../button/button.component';
 import { TokenService } from '../../../features/auths/services/token/token.service';
 import { AuthService } from '../../../features/auths/services/auth.service';
+import { jwtDecode } from 'jwt-decode';
+import { GetUserByEmailResponse } from '../../../features/auths/models/get-user-by-email-response.dto';
+import { GetUserByEmailRequest } from '../../../features/auths/models/get-user-by-email-request.dto';
+
 
 /* export interface NavItemInterface{ //Bu şekilde de interface tanımlayarak da olur.
   label: string;
@@ -11,14 +15,14 @@ import { AuthService } from '../../../features/auths/services/auth.service';
 }
 export type NavItem = NavItemInterface; */
 
-export type NavItem = {  
+export type NavItem = {
   label: string;
   link: string
 }
 
 export type NavTitle = {
   text: string,
-  routerLink ?: string
+  routerLink?: string
 } | undefined;
 
 
@@ -36,23 +40,22 @@ export class NavbarComponent {
   @Input() managementItems : NavItem[] = [];
   @Input() endContentTemplate ?: TemplateRef<any>;
   
-  token : string | null = null;
+  token: string | null = null;
   role: string | null = null;
+  id: number | null = null;
 
 
-  constructor(private tokenService: TokenService, private authService: AuthService) {}
+  constructor(private tokenService: TokenService, private authService: AuthService, private change: ChangeDetectorRef) { }
 
 
-  ngOnInit(){
+  ngOnInit() {
     this.token = this.tokenService.token;
-    this.role = this.authService.role;
+    this.role = this.authService.role; 
 
-    console.log(this.authService.role)
   }
 
 
-
-  isUrl(url: string): boolean{
+  isUrl(url: string): boolean {
     return (
       url.startsWith("http") ||
       url.startsWith("https") ||
@@ -60,8 +63,8 @@ export class NavbarComponent {
       url.startsWith("tel")
     )
 
-/*     const urlRegex = new RegExp ( / ( https: \/\/ www \. | http: \/\/ www \. | https: \/\/ | http: \/\/ ) ? [ a-zA-Z0-9 ] {2,} ( \. [ a-zA-Z0-9 ] {2,} )( \. [ a-zA-Z0-9 ] {2,} ) ? / );
-
-    return urlRegex.test(url); */
+    /*     const urlRegex = new RegExp ( / ( https: \/\/ www \. | http: \/\/ www \. | https: \/\/ | http: \/\/ ) ? [ a-zA-Z0-9 ] {2,} ( \. [ a-zA-Z0-9 ] {2,} )( \. [ a-zA-Z0-9 ] {2,} ) ? / );
+    
+        return urlRegex.test(url); */
   }
 }

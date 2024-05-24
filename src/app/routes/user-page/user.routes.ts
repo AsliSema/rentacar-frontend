@@ -4,8 +4,7 @@ import { UserPageComponent } from "./user-page.component";
 
 export const userRoutes: Routes = [
     {
-        path: 'users',
-        //pathMatch: 'full',
+        path: 'user',
         component: UserPageComponent
     }
 ];

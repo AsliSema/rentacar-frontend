@@ -54,7 +54,11 @@ export class LoginFormComponent {
       next: (response) => {
         this.tokenService.token = response.bareerToken as string
         this.authService.role = response.role as string
+        this.authService.userId = response.id as number
         console.log(response) //sil sonra
+        console.log(this.authService.userId)
+        console.log("decodedEmail   ", this.authService.decodedEmail)
+        console.log(this.authService.getUserByEmail)
 
       },
       error: (error) => {

@@ -79,7 +79,11 @@ export class UpdateUserFormComponent implements OnInit{
         this.change.markForCheck();
 
         setTimeout(()=>{
-          this.router.navigate(['/management/users']);
+          if(localStorage.getItem("role") === "ADMIN"){
+            this.router.navigate(['/management/users']);
+          }else{
+            this.router.navigate(['/models']);
+          }
         }, 2000)
       }
     });
