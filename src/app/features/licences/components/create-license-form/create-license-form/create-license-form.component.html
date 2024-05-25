@@ -1,0 +1,44 @@
+@if (formMessage) {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{formMessage}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card card-warning card-outline mb-4 mt-5">
+                <div class="card-header d-flex justify-content-center py-3">
+                    <div class="card-title h3">Driver License</div>
+                </div>
+                <!-- Start: ReactiveFormsModule -->
+                <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+                    <div class="card-body">
+                        <div class="row m-3">
+                            <label class="col-sm-4 col-form-label">License Number</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" formControlName="licenseNumber" type="text" placeholder="License Number">
+                            </div>
+                        </div>
+                        <div class="row m-3">
+                            <label class="col-sm-4 col-form-label">Issue Date</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" formControlName="issueDate" type="text" placeholder="2022-05-03">
+                            </div>
+                        </div>
+                        <div class="row m-3">
+                            <label class="col-sm-4 col-form-label">License Class</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" formControlName="licenseClass" type="text" placeholder="B, C, D, E">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end py-3">
+                        <app-button type="submit" variant="warning" size="sm" [outline]="true" [px]=4>Add Driver License</app-button>
+                    </div>
+                </form>
+                <!-- End: ReactiveFormsModule -->
+            </div>
+        </div>
+    </div>
+</div>
