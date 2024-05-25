@@ -42,11 +42,11 @@
                     </div>
             }
 
-            @if (token && role === "USER") {
-                <app-button class="mx-1"  [routerLink]="['/user']" variant="secondary" size="md" [outline]="true">Update Personal Info</app-button>
-                <app-button class="mx-1" [routerLink]="['/login']" variant="secondary" size="md" [outline]="true">Update License Info</app-button>
-                <app-button class="mx-1" [routerLink]="['/login']" variant="secondary" size="md" [outline]="true">Past Rentals</app-button>
-        }
+            @if (token && role === "USER" ) {
+                <app-button *ngIf="user?.id" class="mx-1"  [routerLink]="['/user/information']" variant="secondary" size="md" [outline]="true">Update Personal Info</app-button>
+                <app-button *ngIf="user?.id" class="mx-1" [routerLink]="['/user/license', user.id]" variant="secondary" size="md" [outline]="true">Update License Info</app-button>
+                <app-button *ngIf="user?.id" class="mx-1" [routerLink]="['/login']" variant="secondary" size="md" [outline]="true">Past Rentals</app-button>
+            }
             <ng-container *ngIf="endContentTemplate">
                 <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
             </ng-container>

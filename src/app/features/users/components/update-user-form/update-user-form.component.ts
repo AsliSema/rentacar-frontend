@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { UpdateUserRequest } from '../../models/user-update-request.dto';
+import { GetUserByIdResponse } from '../../models/get-user-by-id-response-dto';
 
 @Component({
   selector: 'app-update-user-form',
@@ -40,7 +41,10 @@ export class UpdateUserFormComponent implements OnInit{
       companyName: '',
       phoneNumber: '',
       identityNumber: '',
-      city: ''
+      city: '',
+      licenseNumber:'',
+      licenseIssueDate:'',
+      licenseClass:''
     })
   }
 
@@ -55,7 +59,10 @@ export class UpdateUserFormComponent implements OnInit{
         companyName: user.companyName,
         phoneNumber: user.phoneNumber,
         identityNumber: user.identityNumber,
-        city: user.city
+        city: user.city,
+        licenseNumber: user.licenseLicenseNumber,
+        licenseIssueDate: user.licenseIssueDate,
+        licenseClass: user.licenseLicenseClass
       })
     })
   }

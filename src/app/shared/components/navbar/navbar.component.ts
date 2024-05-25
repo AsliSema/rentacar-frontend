@@ -43,6 +43,8 @@ export class NavbarComponent {
   token: string | null = null;
   role: string | null = null;
   id: number | null = null;
+  user !: GetUserByEmailResponse;
+
 
 
   constructor(private tokenService: TokenService, private authService: AuthService, private change: ChangeDetectorRef) { }
@@ -51,9 +53,36 @@ export class NavbarComponent {
   ngOnInit() {
     this.token = this.tokenService.token;
     this.role = this.authService.role; 
-
+    this.getUser();
   }
 
+
+   
+  getUser() {
+    const decodedEmail = this.decodeToken();
+    if (decodedEmail) {
+      this.authService.getUserByEmail(decodedEmail).subscribe((response) => {
+        this.user = response;
+        this.change.markForCheck();
+      });
+    } else {
+      console.log('No valid token found');
+    }
+  }
+
+  decodeToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decodedToken: { sub: string } = jwtDecode(token);
+        return decodedToken.sub;
+      } catch (error) {
+        console.error('Invalid token:', error);
+        return null;
+      }
+    }
+    return null;
+  } 
 
   isUrl(url: string): boolean {
     return (

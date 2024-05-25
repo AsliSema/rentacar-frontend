@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
 })
 export class UserPageComponent {
 
-  user !: GetUserByEmailResponse;
+/*   user !: GetUserByEmailResponse;
 
   constructor(private authService: AuthService, private change: ChangeDetectorRef){}
 
@@ -51,7 +51,7 @@ export class UserPageComponent {
       }
     }
     return null;
-  }
+  } */
 
 
 }
