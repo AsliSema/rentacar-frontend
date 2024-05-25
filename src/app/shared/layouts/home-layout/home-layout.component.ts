@@ -42,6 +42,7 @@ export class HomeLayoutComponent {
     {label: "Home", link: "/"},
     {label: "About", link: "/about"},
     {label: "Models", link: "/models"},
+    {label: "Cars", link: "/cars"},
     {label: "Contact", link: "mailto: a@gmail.com"}
   ]
 

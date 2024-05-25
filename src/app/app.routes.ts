@@ -6,12 +6,14 @@ import { userRoutes } from './routes/user-page/user.routes';
 import { modelsRoutes } from './routes/models-page/models.routes';
 import { registerRoutes } from './routes/register-page/register.routes';
 import { loginRoutes } from './routes/login-page/login.routes';
+import { carsRoutes } from './routes/cars-page/cars.routes';
 
 
 export const routes: Routes = [
     ...homeRoutes, 
     ...managementRoutes,
     ...modelsRoutes,
+    ...carsRoutes,
     ...userRoutes, //gereksiz sil sonra!
     ...registerRoutes,
     ...loginRoutes,
