@@ -5,6 +5,16 @@ export interface CarListItemDto{
     state: string,
     dailyPrice: number,
     color: string,
+    imagePath: string,
     modelId: number,
-    modelName: string
+    brandId: number,
+    fuelId: number,
+    transmissionId: number,
+    modelName: string,
+    brandName: string,
+    fuelName: string,
+    transmissionName: string,
+    location: string,
+    kilometer: number
+
 }

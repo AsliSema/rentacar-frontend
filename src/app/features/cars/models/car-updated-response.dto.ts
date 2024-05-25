@@ -6,5 +6,6 @@ export interface UpdatedCarResponse{
     dailyPrice: number,
     color: string,
     modelId: number,
-    modelName: string
+    modelName: string,
+    imagePath: string
 }
