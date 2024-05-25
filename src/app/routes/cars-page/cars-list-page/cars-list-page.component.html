@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="mb-5 mx-3 mt-5">
+                    <div class="card-header">Transmission Type</div>
+                    <app-transmissions-list-menu [initialSelectedTransmissionId]="selectedTransmissionId"
+                        (selectTransmission)="onSelectTransmission($event)"></app-transmissions-list-menu>
+            </div>
+            <div class="mb-5 mx-3">
+                <div class="card-header">Fuel Type</div>
+                    <app-fuels-list-menu [initialSelectedFuelId]="selectedFuelId"
+                        (selectFuel)="onSelectFuel($event)">
+                    </app-fuels-list-menu>
+            </div>
+            <div class="mb-5 mx-3">
+                <div class="card-header">Brand Name</div>
+                <app-brands-list-menu [initialSelectedBrandId]="selectedBrandId"
+                    (selectBrand)="onSelectBrand($event)">
+                </app-brands-list-menu>
+            </div>
+            </div>
+        </div>
+        <div class="col-9 mt-5 mx-0">
+            <app-cars-list [transmissionId]="selectedTransmissionId" [fuelId]="selectedFuelId" [brandId]="selectedBrandId"></app-cars-list>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="row">
+    @for (car of filteredCars; track $index) {
+      <div class="col-lg-6 d-flex justify-content-center mb-4">
+        <div class="card shadow-sm p-1 mb-5 bg-body-tertiary" style="max-width: 1080px;">
+          <div class="row m-2 g-0">
+            <div class="col-md-4 mr-5">
+              <img src="../../../../../assets/images/VolkswagenPassat.png" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body text-body-secondary">
+                <h5 class="card-title mb-4">{{car.brandName}} {{car.modelYear}}</h5>
+                 <div class="d-flex justify-content-baseline">
+                  <i class="bi bi-fuel-pump p-1"></i>
+                  <p class="card-text p-1"><small class="text-body-secondary">{{car.fuelName}}</small></p>
+                 </div>
+                 <div class="d-flex justify-content-baseline">
+                  <i class="bi bi-car-front-fill p-1"></i>
+                  <p class="card-text p-1"><small class="text-body-secondary">{{car.transmissionName}}</small></p>
+                 </div>
+                 <div class="d-flex justify-content-baseline">
+                  <i class="bi bi-palette-fill p-1"></i>
+                  <p class="card-text p-1"><small class="text-body-secondary">{{car.color}}</small></p>
+                 </div>
+              </div>
+            </div>
+            <div class="mt-2">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <div class="me-md-0 my-auto"> {{car.dailyPrice}} <span>/day</span></div>
+                <app-button variant="warning" size="md" [outline]="true" [px]=4 [routerLink]="['/cars/carId', car.id]">More Details</app-button> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+</div>
+
+
