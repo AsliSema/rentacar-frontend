@@ -4,7 +4,7 @@
     <div class="card shadow-sm p-1 mb-5 bg-body-tertiary" style="max-width: 1200px; width: 100%;">
       <div class="row m-2 g-0">
         <div class="col-md-4 mr-5">
-          <img src="../../../../../assets/images/VolkswagenPassat.png" class="img-fluid rounded-start" alt="...">
+          <img src={{car.imagePath}} class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
           <div class="card-body text-body-secondary mx-5 px-5">
@@ -33,7 +33,7 @@
         </div>
         <div class="mt-2">
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <div class="me-md-0 my-auto">{{car.dailyPrice}}<span>/day</span></div>
+            <div class="me-md-0 my-auto">{{car.dailyPrice}} <span>$/day</span></div>
             <button type="button" class="btn btn-outline-warning px-4"> Rent Now </button>
           </div>
         </div>
