@@ -1,11 +1,13 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectorRef, Component } from "@angular/core";
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
 import { ButtonComponent } from "../../../../shared/components/button/button.component";
 import { UserService } from "../../../users/services/user.service";
 import { Router } from "@angular/router";
 import { UserAddItemDto } from "../../../users/models/user-add-item-dto";
 import { AuthService } from "../../services/auth.service";
+import { FormMessage } from "../login-form/login-form.component";
+
 
 
 @Component({
@@ -18,7 +20,7 @@ import { AuthService } from "../../services/auth.service";
 export class RegisterFormComponent {
 
   form !: FormGroup
-  formMessage: string | null = null;
+  formMessage: FormMessage = { success: null, error: null };
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -43,8 +45,7 @@ export class RegisterFormComponent {
       companyName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       identityNumber: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
-      city: ['', [Validators.required]]
-
+      city: ['', [Validators.required]],
     })
   }
 
@@ -72,7 +73,7 @@ export class RegisterFormComponent {
         this.change.markForCheck();
       },
       complete: () => {
-        this.formMessage = 'You have created an account!';
+        this.formMessage.success = 'You have created an account!';
         this.form.reset();
         this.change.markForCheck();
 
@@ -86,7 +87,7 @@ export class RegisterFormComponent {
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = this.getErrorMessage();
+      this.formMessage.error = this.getErrorMessage();
       return;
     }
     this.add();

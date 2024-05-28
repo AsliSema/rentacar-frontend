@@ -5,6 +5,7 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { ModelService } from '../../services/model.service';
 import { Router } from '@angular/router';
 import { ModelAddItemDto } from '../../models/model-add-item-dto';
+import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-add-model-form',
@@ -15,7 +16,9 @@ import { ModelAddItemDto } from '../../models/model-add-item-dto';
 })
 export class AddModelFormComponent implements OnInit{
   form !: FormGroup
-  formMessage: string | null = null;
+
+  formMessage: FormMessage = { success: null, error: null };
+  
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -55,7 +58,7 @@ export class AddModelFormComponent implements OnInit{
         this.change.markForCheck();
       },
       complete: () => {
-        this.formMessage = 'Model add successfully!';
+        this.formMessage.success = 'Model add successfully!';
         this.form.reset();
         this.change.markForCheck();
 
@@ -69,7 +72,7 @@ export class AddModelFormComponent implements OnInit{
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = this.getErrorMessage();
+      this.formMessage.error = this.getErrorMessage();
       return;
     }
     this.add();

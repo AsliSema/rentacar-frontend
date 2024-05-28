@@ -8,6 +8,12 @@ import { LoginRequest } from '../../models/login-request.dto';
 import { AuthService } from '../../services/auth.service';
 import { TokenService } from '../../services/token/token.service';
 
+export interface FormMessage {
+  success: string | null;
+  error: string | null;
+}
+
+
 @Component({
   selector: 'app-login-form',
   standalone: true,
@@ -19,7 +25,8 @@ export class LoginFormComponent {
 
 
   form !: FormGroup
-  formMessage: string | null = null;
+
+  formMessage: FormMessage = { success: null, error: null };
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -62,11 +69,11 @@ export class LoginFormComponent {
 
       },
       error: (error) => {
-        this.formMessage = error.error;
+        this.formMessage.error = error.error.detail;
         this.change.markForCheck();
       },
       complete: () => {
-        this.formMessage = 'You have signed in successfully!';
+        this.formMessage.success = 'You have signed in successfully!';
         //this.form.reset();
         this.change.markForCheck();
 
@@ -80,7 +87,7 @@ export class LoginFormComponent {
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = this.getErrorMessage();
+      this.formMessage.error = this.getErrorMessage();
       return;
     }
     this.add();

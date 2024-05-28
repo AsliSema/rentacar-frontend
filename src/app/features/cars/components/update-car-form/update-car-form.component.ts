@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CarService } from '../../services/car.service';
 import { Router } from '@angular/router';
 import { UpdateCarRequest } from '../../models/car-update-request.dto';
+import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-update-car-form',
@@ -18,7 +19,8 @@ export class UpdateCarFormComponent implements OnInit{
   @Input() carId !: number;
 
   form !: FormGroup;
-  formMessage: string | null = null;
+
+  formMessage: FormMessage = { success: null, error: null };
 
   constructor(private formBuilder: FormBuilder, private carService: CarService, private change: ChangeDetectorRef, private router: Router){
   }
@@ -28,20 +30,6 @@ export class UpdateCarFormComponent implements OnInit{
       this.getCar();
     }
 
-/*   createForm(){
-    this.carService.getCarById(this.carId).subscribe((car)=>{
-      console.log(this.carId)
-      console.log(car)
-      this.form = this.formBuilder.group({
-        plate: car.plate,
-        modelYear: car.modelYear,
-        state: car.state,
-        dailyPrice: car.dailyPrice,
-        modelId: car.modelId,
-        userId: car.userId
-      })
-    })
-  } */
 
   createForm() {
     this.form = this.formBuilder.group({
@@ -81,7 +69,7 @@ export class UpdateCarFormComponent implements OnInit{
     }
     this.carService.updateCarById(this.carId, request).subscribe({
       complete: () => {
-        this.formMessage = 'Car Update Successfully!';
+        this.formMessage.success = 'Car Update Successfully!';
         this.change.markForCheck();
 
         setTimeout(()=>{
@@ -93,7 +81,7 @@ export class UpdateCarFormComponent implements OnInit{
 
   onFormSubmit() {
     if(this.form.invalid){
-      this.formMessage = 'Please Fill the form correctly!';
+      this.formMessage.error = 'Please Fill the form correctly!';
       return
     }
 

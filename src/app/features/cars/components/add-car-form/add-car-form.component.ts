@@ -5,6 +5,7 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { Router } from '@angular/router';
 import { CarService } from '../../services/car.service';
 import { CarAddItemDto } from '../../models/car-add-item-dto';
+import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-add-car-form',
@@ -15,7 +16,9 @@ import { CarAddItemDto } from '../../models/car-add-item-dto';
 })
 export class AddCarFormComponent implements OnInit{
   form !: FormGroup
-  formMessage: string | null = null;
+
+    formMessage: FormMessage = { success: null, error: null };
+
 
   constructor (
     private formBuilder: FormBuilder,
@@ -61,7 +64,7 @@ export class AddCarFormComponent implements OnInit{
         this.change.markForCheck();
       },
       complete: () => {
-        this.formMessage = 'Car add successfully!';
+        this.formMessage.success = 'Car add successfully!';
         this.form.reset();
         this.change.markForCheck();
 
@@ -75,7 +78,7 @@ export class AddCarFormComponent implements OnInit{
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = this.getErrorMessage();
+      this.formMessage.error = this.getErrorMessage();
       return;
     }
     this.add();

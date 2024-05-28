@@ -5,6 +5,7 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { BrandsService } from '../../services/brands.service';
 import { BrandAddItemDto } from '../../models/brand-add-item-dto';
 import { Router } from '@angular/router';
+import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-add-brand-form',
@@ -20,7 +21,9 @@ import { Router } from '@angular/router';
 export class AddBrandFormComponent implements OnInit{
   //nameInput: string = ''  FormsModule için
   form !: FormGroup
-  formMessage: string | null = null;
+  
+  formMessage: FormMessage = { success: null, error: null };
+
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -55,7 +58,7 @@ export class AddBrandFormComponent implements OnInit{
         this.change.markForCheck();
       },
       complete: () => {
-        this.formMessage = 'Brand add successfully!';
+        this.formMessage.success = 'Brand add successfully!';
         this.form.reset();
         this.change.markForCheck();
 
@@ -70,7 +73,7 @@ export class AddBrandFormComponent implements OnInit{
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = this.getErrorMessage();
+      this.formMessage.error = this.getErrorMessage();
       return;
     }
     this.add();

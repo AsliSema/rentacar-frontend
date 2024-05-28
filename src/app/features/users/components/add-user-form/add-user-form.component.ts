@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserAddItemDto } from '../../models/user-add-item-dto';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../../auths/services/auth.service';
+import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-add-user-form',
@@ -16,7 +17,9 @@ import { AuthService } from '../../../auths/services/auth.service';
 })
 export class AddUserFormComponent implements OnInit{
   form !: FormGroup
-  formMessage: string | null = null;
+
+  formMessage: FormMessage = { success: null, error: null };
+  
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -69,7 +72,7 @@ export class AddUserFormComponent implements OnInit{
         this.change.markForCheck();
       },
       complete: () => {
-        this.formMessage = 'User add successfully!';
+        this.formMessage.success = 'User add successfully!';
         this.form.reset();
         this.change.markForCheck();
 
@@ -83,7 +86,7 @@ export class AddUserFormComponent implements OnInit{
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = this.getErrorMessage();
+      this.formMessage.error = this.getErrorMessage();
       return;
     }
     this.add();

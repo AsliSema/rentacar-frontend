@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BrandsService } from '../../services/brands.service';
 import { UpdateBrandRequest } from '../../models/brand-update-request-dto';
 import { Router, RouterLink } from '@angular/router';
+import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
     selector: 'app-edit-brand-form',
@@ -17,7 +18,9 @@ export class EditBrandFormComponent implements OnInit{
   @Input() brandId !: number;  
 
   form !: FormGroup;
-  formMessage: string | null = null;
+  
+  formMessage: FormMessage = { success: null, error: null };
+
 
   constructor(private formBuilder: FormBuilder, private brandsService: BrandsService, private change: ChangeDetectorRef, private router: Router){}
 
@@ -49,7 +52,7 @@ export class EditBrandFormComponent implements OnInit{
     }
     this.brandsService.updateBrandById(this.brandId, request).subscribe({
       complete: () => {
-        this.formMessage = 'Brand Update Successfully!';
+        this.formMessage.success = 'Brand Update Successfully!';
         this.change.markForCheck();
 
         setTimeout(()=>{
@@ -61,7 +64,7 @@ export class EditBrandFormComponent implements OnInit{
 
   onFormSubmit() {
     if(this.form.invalid){
-      this.formMessage = 'Please Fill the form correctly!';
+      this.formMessage.error = 'Please Fill the form correctly!';
       return
     }
 

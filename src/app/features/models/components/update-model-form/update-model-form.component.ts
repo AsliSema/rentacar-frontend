@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UpdateModelRequest } from '../../models/model-update-request.dto';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-update-model-form',
@@ -18,7 +19,9 @@ export class UpdateModelFormComponent implements OnInit{
   @Input() modelId !: number;  
 
   form !: FormGroup;
-  formMessage: string | null = null;
+
+  formMessage: FormMessage = { success: null, error: null };
+  
 
   constructor(private formBuilder: FormBuilder, private modelService: ModelService, private change: ChangeDetectorRef, private router: Router){}
 
@@ -61,7 +64,7 @@ export class UpdateModelFormComponent implements OnInit{
     }
     this.modelService.updateModelById(this.modelId, request).subscribe({
       complete: () => {
-        this.formMessage = 'Model Update Successfully!';
+        this.formMessage.success = 'Model Update Successfully!';
         this.change.markForCheck();
 
         setTimeout(()=>{
@@ -73,7 +76,7 @@ export class UpdateModelFormComponent implements OnInit{
 
   onFormSubmit() {
     if(this.form.invalid){
-      this.formMessage = 'Please Fill the form correctly!';
+      this.formMessage.error = 'Please Fill the form correctly!';
       return
     }
 

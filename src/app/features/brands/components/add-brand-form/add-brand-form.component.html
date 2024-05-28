@@ -1,12 +1,11 @@
-<!-- FormsModule -->
-<!-- <label for="nameInput">Brand Name</label> -->
-<!-- <input [(ngModel)]="nameInput" type="text" placeholder="Brand Name">-->
-<!-- ngModel input her değiştiğinde ilgili state in otomatik değişmesini sağlar.-->
-
-
-@if (formMessage) {
+@if (formMessage.error){
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{formMessage}}
+        {{formMessage.error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}@else if (formMessage.success){
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{formMessage.success}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }

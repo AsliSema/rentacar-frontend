@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LicenseAddItemDto } from '../../../models/license-add-item.dto';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
+import { FormMessage } from '../../../../auths/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-create-license-form',
@@ -17,7 +18,9 @@ export class CreateLicenseFormComponent implements OnInit{
   @Input() userId !: number;
 
   form !: FormGroup
-  formMessage: string | null = null;
+  
+  formMessage: FormMessage = { success: null, error: null };
+
 
   constructor (
     private formBuilder: FormBuilder,
@@ -65,7 +68,7 @@ export class CreateLicenseFormComponent implements OnInit{
         this.change.markForCheck();
       },
       complete: () => {
-        this.formMessage = 'License add successfully!';
+        this.formMessage.success = 'License add successfully!';
         this.form.reset();
         this.change.markForCheck();
 
@@ -79,7 +82,7 @@ export class CreateLicenseFormComponent implements OnInit{
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = this.getErrorMessage();
+      this.formMessage.error = this.getErrorMessage();
       return;
     }
     this.add();
