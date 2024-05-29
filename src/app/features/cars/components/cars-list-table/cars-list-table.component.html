@@ -1,50 +1,58 @@
-<div class="card mt-5 mb-4 mx-5">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h3 class="card-title">Cars Table</h3>
-        <app-button routerLink="/management/cars/create" variant="primary" size="md" [outline]="true" [px]="5">Create Car</app-button>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body p-0">
-        <table appTable class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Id</th>
-                    <th scope="col">Model Id</th>
-                    <th scope="col">Model Name</th>
-                    <th scope="col">Model Year</th>
-                    <th scope="col">Transmission Name</th>
-                    <th scope="col">Fuel Name</th>
-                    <th scope="col">Plate</th>
-                    <th scoope="col">State</th>
-                    <th scoope="col">Price</th>
-                    <th scoope="col">Color</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (car of cars; track $index) {
-                <tr>
-                    <th scope="row">{{$index + 1}}</th>
-                    <td scope="row">{{car.id}}</td>
-                    <td scope="row">{{car.modelId}}</td>
-                    <td scope="row">{{car.modelName}}</td>
-                    <td scope="row">{{car.modelYear}}</td>
-                    <td scope="row">{{car.transmissionName}}</td>
-                    <td scope="row">{{car.fuelName}}</td>
-                    <td scope="row">{{car.plate}}</td>
-                    <td scope="row">{{car.state}}</td>
-                    <td scope="row">{{car.dailyPrice}}</td>
-                    <td scope="row">{{car.color}}</td>
-                    <td>
-                        <div class="d-flex justify-content-end">
-                            <app-button [routerLink]="['/management/cars/update', car.id]" variant="warning" size="sm" [outline]="true" [px]=4>Update</app-button>
-                            <app-button class="ms-3" (click)="deleteCar(car.id)" variant="danger" size="sm" [outline]="true" [px]=4>Delete</app-button>
-                        </div>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="card mt-5 mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title">Cars Table</h3>
+                    <app-button routerLink="/management/cars/create" variant="primary" size="md" [outline]="true" [px]="5">Create Car</app-button>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table appTable class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Model Id</th>
+                                    <th scope="col">Model Name</th>
+                                    <th scope="col">Model Year</th>
+                                    <th scope="col">Transmission Name</th>
+                                    <th scope="col">Fuel Name</th>
+                                    <th scope="col">Plate</th>
+                                    <th scoope="col">State</th>
+                                    <th scoope="col">Price</th>
+                                    <th scoope="col">Color</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (car of cars; track $index) {
+                                <tr>
+                                    <th scope="row">{{$index + 1}}</th>
+                                    <td scope="row">{{car.id}}</td>
+                                    <td scope="row">{{car.modelId}}</td>
+                                    <td scope="row">{{car.modelName}}</td>
+                                    <td scope="row">{{car.modelYear}}</td>
+                                    <td scope="row">{{car.transmissionName}}</td>
+                                    <td scope="row">{{car.fuelName}}</td>
+                                    <td scope="row">{{car.plate}}</td>
+                                    <td scope="row">{{car.state}}</td>
+                                    <td scope="row">{{car.dailyPrice}}</td>
+                                    <td scope="row">{{car.color}}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-end">
+                                            <app-button [routerLink]="['/management/cars/update', car.id]" variant="warning" size="sm" [outline]="true" [px]=4>Update</app-button>
+                                            <app-button class="ms-3" (click)="deleteCar(car.id)" variant="danger" size="sm" [outline]="true" [px]=4>Delete</app-button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
