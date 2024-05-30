@@ -1,0 +1,62 @@
+<!-- Start: Form Message  -->
+@if (formMessage.error){
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{formMessage.error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}@else if (formMessage.success){
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{formMessage.success}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<!-- End: Form Message -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card card-warning card-outline mb-4 mt-5">
+                <div class="card-header d-flex justify-content-center py-3">
+                    <div class="card-title h3">Update Rental Dashboard</div>
+                </div>
+                <!-- Start: ReactiveFormsModule -->
+                <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+                    <div class="card-body my-3">
+                        <div class="row mb-3 ">
+                            <label class="col-lg-4 col-form-label">Car Id</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" formControlName="carId" type="text" placeholder="Car Id">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-lg-4 col-form-label">User Id</label>
+                            <div class="col-lg-8">
+                                <input formControlName="userId" class="form-control" type="text" placeholder="User Id">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-lg-4 col-form-label">Start Date</label>
+                            <div class="col-lg-8">
+                                <input formControlName="startDate" class="form-control" type="text" placeholder="2024-06-03">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-lg-4 col-form-label">End Date</label>
+                            <div class="col-lg-8">
+                                <input formControlName="endDate" class="form-control" type="text" placeholder="2024-06-07">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end py-3">
+                        <app-button type="submit" variant="warning" size="sm" [outline]="true" [px]=4>Update Rental</app-button>
+                    </div>
+
+                </form>
+                <!-- End: ReactiveFormsModule -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
