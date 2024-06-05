@@ -12,7 +12,7 @@ export const userGuard: CanActivateFn = (route, state) => {
 
   const role = authService.role;
 
-  if (!((role === "USER") || (role === "ADMIN"))) {
+  if (!(role === "USER")) {
     router.navigate(['/login']);
     return false;
   }
