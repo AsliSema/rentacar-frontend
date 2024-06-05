@@ -6,5 +6,6 @@ export interface CarAddItemDto{
     color: string,
     modelId: number,
     location: string,
-    kilometer: string
+    kilometer: string,
+    imagePath: string
 }

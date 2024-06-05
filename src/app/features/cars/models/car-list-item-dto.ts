@@ -15,6 +15,6 @@ export interface CarListItemDto{
     fuelName: string,
     transmissionName: string,
     location: string,
-    kilometer: number
+    kilometer: number,
 
 }

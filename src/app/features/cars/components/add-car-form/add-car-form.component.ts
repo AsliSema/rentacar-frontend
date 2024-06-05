@@ -40,7 +40,8 @@ export class AddCarFormComponent implements OnInit{
       color: ['', [Validators.required]],
       modelId: ['', [Validators.required]],
       location: ['', Validators.required],
-      kilometer: ['', Validators.required]
+      kilometer: ['', Validators.required],
+      imagePath: ['', Validators.required]
     })
   }
 
@@ -53,7 +54,8 @@ export class AddCarFormComponent implements OnInit{
       color: this.form.value.color,
       modelId: this.form.value.modelId,
       location: this.form.value.location,
-      kilometer: this.form.value.kilometer
+      kilometer: this.form.value.kilometer,
+      imagePath: this.form.value.imagePath
     }
     this.carService.createCar(request).subscribe({
       next: (response) => {
