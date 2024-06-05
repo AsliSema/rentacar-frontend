@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { UpdateUserRequest } from '../../models/user-update-request.dto';
 import { GetUserByIdResponse } from '../../models/get-user-by-id-response-dto';
+import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-update-user-form',
@@ -19,7 +20,9 @@ export class UpdateUserFormComponent implements OnInit{
   @Input() userId !: number;
 
   form !: FormGroup;
-  formMessage: string | null = null;
+
+  formMessage: FormMessage = { success: null, error: null };
+
 
   constructor(
     private formBuilder: FormBuilder, private userService: UserService, private change: ChangeDetectorRef, private router: Router
@@ -43,7 +46,7 @@ export class UpdateUserFormComponent implements OnInit{
       identityNumber: '',
       city: '',
       licenseNumber:'',
-      licenseIssueDate:'',
+      issueDate:'',
       licenseClass:''
     })
   }
@@ -51,6 +54,8 @@ export class UpdateUserFormComponent implements OnInit{
 
   getUser(){
     this.userService.getUserById(this.userId).subscribe((user)=>{
+      console.log(user.issueDate)
+      console.log(user)
       this.form.patchValue({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -60,9 +65,9 @@ export class UpdateUserFormComponent implements OnInit{
         phoneNumber: user.phoneNumber,
         identityNumber: user.identityNumber,
         city: user.city,
-        licenseNumber: user.licenseLicenseNumber,
-        licenseIssueDate: user.licenseIssueDate,
-        licenseClass: user.licenseLicenseClass
+        licenseNumber: user.licenseNumber,
+        issueDate: user.issueDate,  //does not work
+        licenseClass: user.licenseClass
       })
     })
   }
@@ -82,14 +87,14 @@ export class UpdateUserFormComponent implements OnInit{
 
     this.userService.updateUserById(this.userId, request).subscribe({
       complete: () => {
-        this.formMessage = 'User Update Successfully!';
+        this.formMessage.success = 'User Update Successfully!';
         this.change.markForCheck();
 
         setTimeout(()=>{
           if(localStorage.getItem("role") === "ADMIN"){
             this.router.navigate(['/management/users']);
           }else{
-            this.router.navigate(['/models']);
+            this.router.navigate(['/cars']);
           }
         }, 2000)
       }
@@ -99,7 +104,7 @@ export class UpdateUserFormComponent implements OnInit{
 
   onFormSubmit() {
     if(this.form.invalid){
-      this.formMessage = 'Please Fill the form correctly!';
+      this.formMessage.error = 'Please Fill the form correctly!';
       return
     }
 

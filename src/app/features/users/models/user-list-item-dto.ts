@@ -5,10 +5,10 @@ export interface UserListItemDto {
     companyName: string,
     email: string,
     city: string,
-    licenseId: number,
-    licenseLicenseNumber: string,
-    licenseLicenseClass: string,
-    licenseLicenseIssueDate: string,
+    licenseId: number;
+    licenseNumber: string;
+    issueDate: string;
+    licenseClass: string;
     phoneNumber: string,
     identityNumber: string,
     carId: number,

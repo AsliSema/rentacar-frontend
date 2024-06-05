@@ -9,8 +9,8 @@ export interface GetUserByIdResponse{
     identityNumber: string;
     city: string;
     licenseId: number;
-    licenseLicenseNumber: string;
-    licenseIssueDate: string;
-    licenseLicenseClass: string;
+    licenseNumber: string;
+    issueDate: string;
+    licenseClass: string;
     role: string;
 }

@@ -1,7 +1,12 @@
 <!-- Start: Form Message  -->
-@if (formMessage) {
+@if (formMessage.error){
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{formMessage}}
+        {{formMessage.error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}@else if (formMessage.success){
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{formMessage.success}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
@@ -67,7 +72,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-4 col-form-label">License Issue Date</label>
                             <div class="col-sm-8">
-                                <input formControlName="licenseIssueDate" class="form-control" type="text" readonly>
+                                <input formControlName="issueDate" class="form-control" type="text" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">

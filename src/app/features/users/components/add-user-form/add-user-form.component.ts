@@ -40,7 +40,7 @@ export class AddUserFormComponent implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)]],
       confirmPassword: ['', [Validators.required]],
-      companyName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      companyName: [''],
       phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       identityNumber: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       city: ['', [Validators.required]]
