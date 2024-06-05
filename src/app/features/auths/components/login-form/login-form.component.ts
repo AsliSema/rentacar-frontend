@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../../users/services/user.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
@@ -33,7 +32,7 @@ export class LoginFormComponent {
     private authService: AuthService,
     private tokenService: TokenService, 
     private change: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
   ){}
 
 
@@ -62,11 +61,6 @@ export class LoginFormComponent {
         this.tokenService.token = response.bareerToken as string
         this.authService.role = response.role as string
         this.authService.userId = response.id as number
-        console.log(response) //sil sonra
-        console.log(this.authService.userId)
-        console.log("decodedEmail   ", this.authService.decodedEmail)
-        console.log(this.authService.getUserByEmail)
-
       },
       error: (error) => {
         this.formMessage.error = error.error.detail;
@@ -74,11 +68,10 @@ export class LoginFormComponent {
       },
       complete: () => {
         this.formMessage.success = 'You have signed in successfully!';
-        //this.form.reset();
         this.change.markForCheck();
 
         setTimeout(()=>{ 
-          this.router.navigate(['/models']);
+          this.router.navigate(['/cars']);
         }, 2000)
       }
     });
