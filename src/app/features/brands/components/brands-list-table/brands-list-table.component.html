@@ -28,7 +28,7 @@
                                     <td>{{brand.createdDate}}</td>
                                     <td>
                                         <div class="d-flex justify-content-end">
-                                            <app-button [routerLink]="['/management/brands/edit', brand.id]" variant="warning" size="sm" [outline]="true" [px]=3>Update</app-button>
+                                            <app-button [routerLink]="['/management/brands/update', brand.id]" variant="warning" size="sm" [outline]="true" [px]=3>Update</app-button>
                                             <app-button class="ms-3" (click)="deleteBrand(brand.id)" variant="danger" size="sm" [outline]="true" [px]=3>Delete</app-button>
                                         </div>
                                     </td>

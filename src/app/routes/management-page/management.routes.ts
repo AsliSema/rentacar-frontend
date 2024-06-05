@@ -17,11 +17,15 @@ import { ManagementUsersPageComponent } from './management-users-page/management
 import { ManagementCreateUserPageComponent } from './management-users-page/management-create-user-page/management-create-user-page.component';
 import { ManagementUpdateUserPageComponent } from './management-users-page/management-update-user-page/management-update-user-page.component';
 import { ModelDetailPageComponent } from '../models-page/model-detail-page/model-detail-page.component';
+import { ManagementRentalsPageComponent } from './management-rentals-page/management-rentals-page.component';
+import { ManagementCreateRentalPageComponent } from './management-rentals-page/management-create-rental-page/management-create-rental-page.component';
+import { ManagementUpdateRentalPageComponent } from './management-rentals-page/management-update-rental-page/management-update-rental-page.component';
+import { tokenGuard } from '../../shared/guards/token.guard';
 
 export const managementRoutes: Routes = [
     {
         path: 'management',
-        canActivate: [authGuard], //Angular Guard yapıları ile ilgili route'a giriş yapmadan önce çalışacak yapılar
+        canActivate: [tokenGuard, authGuard],
         data: {
             requiredRoles: ['Admin']
         },
@@ -36,7 +40,7 @@ export const managementRoutes: Routes = [
                 component: ManagementCreateBrandPageComponent
             },
             {
-                path: 'brands/edit/:brandId',
+                path: 'brands/update/:brandId',
                 component: ManagementEditBrandPageComponent
             },
             {
@@ -78,6 +82,18 @@ export const managementRoutes: Routes = [
             {
                 path: "users/update/:userId",
                 component: ManagementUpdateUserPageComponent
+            },
+            {
+                path: "rentals",
+                component: ManagementRentalsPageComponent
+            },
+            {
+                path: "rentals/create",
+                component: ManagementCreateRentalPageComponent
+            },
+            {
+                path: "rentals/update/:rentalId",
+                component: ManagementUpdateRentalPageComponent
             }
         ]
     }

@@ -1,18 +1,9 @@
 <app-home-layout>
-    <div class="d-flex flex-column justify-content-center align-items-center app-overlay">
-        <h1>Welcome to our rental gallery!</h1>
-        <app-button variant="warning" [routerLink]="['/models']">Explore Our Models</app-button>
+    <div class=" app-overlay">
+        <div class="d-flex flex-column justify-content-center align-items-center home-text">
+            <h1 style="text-shadow: 2px 2px 2px white;">Unlock adventure with RentiCar <br> where quality meets comfort</h1>
+            <app-button variant="warning" [routerLink]="['/cars']" style=" box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">Explore Our Cars</app-button>
+        </div>
+        <img class="home-bg" src="../../../assets/images/_0d6aae18-fe9a-4fde-a324-383727949443.jpeg">
     </div>
-
-<!--     <div class="row">
-        <div class="col-4">
-            <app-brands-list-menu [initialSelectedBrandId]="selectedBrandId" (selectBrand)="onSelectBrand($event)"></app-brands-list-menu>
-        </div>
-        <div class="col-8">
-            {{selectedBrandId}}
-            App model card list
-        </div>
-    </div> -->
-
-
 </app-home-layout>

@@ -28,32 +28,29 @@ export class HomeLayoutComponent {
 
   logout() {
     this.tokenService.clearToken();
-    //location.reload(); 
     location.href = "/";
   }
 
 
   title : NavTitle = {
-    text: "RentACar",
+    text: "RentiCar",
     routerLink: "/"
   }
 
   navItems : NavItem[] = [
     {label: "Home", link: "/"},
     {label: "About", link: "/about"},
-    {label: "Models", link: "/models"},
     {label: "Cars", link: "/cars"},
     {label: "Contact", link: "mailto: a@gmail.com"}
   ]
 
   managementItems: NavItem[] = [
-    {label: "Management", link: "/management"},
     {label: "Users Management", link: "/management/users"},
-    {label: "Cars Management", link: "/management/cars"},
     {label: "Brands Management", link: "/management/brands"},
-    {label: "Models Management", link:"/management/models"}
+    {label: "Cars Management", link: "/management/cars"},
+    {label: "Models Management", link:"/management/models"},
+    {label: "Rentals Management", link: "/management/rentals"}
   ]
-
 
 
 }
