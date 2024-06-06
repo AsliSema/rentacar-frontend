@@ -72,7 +72,12 @@
                         <div class="row my-3 d-flex justify-content-center">
                             <label class="col-lg-3 col-sm-3 col-form-label">City</label>
                             <div class="col-lg-6 col-sm-4">
-                                <input class="form-control" formControlName="city" type="text" placeholder="City">
+                                <select class="form-select form-control" formControlName="city" aria-label="Default select example">
+                                    <option selected>Select One</option>
+                                    @for (city of citiesInTurkey; track $index) {
+                                        <option >{{city}}</option>
+                                    }
+                                    </select>
                             </div>
                         </div>
                     </div>
