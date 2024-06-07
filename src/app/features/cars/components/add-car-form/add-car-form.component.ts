@@ -6,6 +6,11 @@ import { Router } from '@angular/router';
 import { CarService } from '../../services/car.service';
 import { CarAddItemDto } from '../../models/car-add-item-dto';
 import { FormMessage } from '../../../auths/components/login-form/login-form.component';
+import { ModelListItemDto } from '../../../models/models/model-list-item-dto';
+import { ModelService } from '../../../models/services/model.service';
+import { ModelInterface } from '../../../../interfaces/modelInterface';
+
+
 
 @Component({
   selector: 'app-add-car-form',
@@ -14,21 +19,31 @@ import { FormMessage } from '../../../auths/components/login-form/login-form.com
   templateUrl: './add-car-form.component.html',
   styleUrl: './add-car-form.component.scss'
 })
+
 export class AddCarFormComponent implements OnInit{
   form !: FormGroup
 
-    formMessage: FormMessage = { success: null, error: null };
+  formMessage: FormMessage = { success: null, error: null };
+
+  
+  selectModels: ModelInterface[] = [{ id: null, name: null }];
+
+  citiesInTurkey: string[] = [
+    "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin","Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa","Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum","Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir","Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırklareli", "Kırşehir","Kilis", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir","Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak"
+  ];
 
 
   constructor (
     private formBuilder: FormBuilder,
     private carService: CarService,
+    private modelService: ModelService,
     private change: ChangeDetectorRef,
     private router: Router
   ){}
 
   ngOnInit(): void {
     this.createForm();
+    this.getAllModels();
   }
 
   createForm(){
@@ -75,6 +90,14 @@ export class AddCarFormComponent implements OnInit{
         }, 2000)
       }
     });
+  }
+
+
+  getAllModels() {
+    this.modelService.getModels().subscribe((models)=>{
+      this.selectModels = models.map(model => ({ id: model.id, name: model.name }));
+      console.log("this.selectModels ", this.selectModels)
+    })
   }
 
 
