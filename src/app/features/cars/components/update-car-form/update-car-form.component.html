@@ -22,9 +22,14 @@
                 <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
                     <div class="card-body my-3">
                         <div class="row mb-3">
-                            <label class="col-sm-4 col-form-label">Model Id</label>
+                            <label class="col-sm-4 col-form-label">Model Name</label>
                             <div class="col-sm-8">
-                                <input formControlName="modelId" class="form-control" type="text" placeholder="Model Id">
+                                <select class="form-select form-control" formControlName="modelId" aria-label="Default select example">
+                                    <option value="" selected></option>
+                                    @for (model of selectModels; track $index) {
+                                        <option [ngValue]="model.id">{{model.name}}</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -49,6 +54,17 @@
                             <label class="col-sm-4 col-form-label">Daily Price</label>
                             <div class="col-sm-8">
                                 <input formControlName="dailyPrice" class="form-control" type="text" placeholder="Daily Price">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-4 col-form-label">Location</label>
+                            <div class="col-sm-8">
+                                <select class="form-select form-control" formControlName="location" aria-label="Default select example">
+                                    <option value="" selected></option>
+                                    @for (city of citiesInTurkey; track $index) {
+                                        <option>{{city}}</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">

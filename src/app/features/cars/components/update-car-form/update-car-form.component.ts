@@ -6,6 +6,8 @@ import { CarService } from '../../services/car.service';
 import { Router } from '@angular/router';
 import { UpdateCarRequest } from '../../models/car-update-request.dto';
 import { FormMessage } from '../../../auths/components/login-form/login-form.component';
+import { ModelInterface } from '../../../../interfaces/modelInterface';
+import { ModelService } from '../../../models/services/model.service';
 
 @Component({
   selector: 'app-update-car-form',
@@ -22,12 +24,22 @@ export class UpdateCarFormComponent implements OnInit{
 
   formMessage: FormMessage = { success: null, error: null };
 
-  constructor(private formBuilder: FormBuilder, private carService: CarService, private change: ChangeDetectorRef, private router: Router){
+
+  selectModels: ModelInterface[] = [{ id: null, name: null }];
+
+
+  citiesInTurkey: string[] = [
+    "adana", "adıyaman", "afyonkarahisar", "ağrı", "aksaray", "amasya", "ankara", "antalya", "ardahan", "artvin", "aydın", "balıkesir", "bartın", "batman", "bayburt", "bilecik", "bingöl", "bitlis", "bolu", "burdur", "bursa", "çanakkale", "çankırı", "çorum", "denizli", "diyarbakır", "düzce", "edirne", "elazığ", "erzincan", "erzurum", "eskişehir", "gaziantep", "giresun", "gümüşhane", "hakkâri", "hatay", "ığdır", "ısparta", "istanbul", 
+    "izmir", "kahramanmaraş", "karabük", "karaman", "kars", "kastamonu", "kayseri", "kırıkkale", "kırklareli", "kırşehir", "kilis", "kocaeli", "konya", "kütahya", "malatya", "manisa", "mardin", "mersin", "muğla", "muş", "nevşehir", "niğde", "ordu", "osmaniye", "rize", "sakarya", "samsun", "şanlıurfa", "siirt", "sinop", "sivas", "şırnak", "tekirdağ", "tokat", "trabzon", "tunceli", "uşak", "van", "yalova", "yozgat", "zonguldak"
+  ];
+
+  constructor(private formBuilder: FormBuilder, private carService: CarService, private change: ChangeDetectorRef, private modelService: ModelService, private router: Router){
   }
 
   ngOnInit(): void {
       this.createForm();
       this.getCar();
+      this.getAllModels();
     }
 
 
@@ -39,20 +51,30 @@ export class UpdateCarFormComponent implements OnInit{
       dailyPrice: '',
       color: '',
       modelId: '',
+      location: '',
       userId: ''
     })
   }
 
   getCar(){
     this.carService.getCarById(this.carId).subscribe((car)=>{
+      console.log(car)
       this.form.patchValue({
         plate: car.plate,
         modelYear: car.modelYear,
         state: car.state,
         dailyPrice: car.dailyPrice,
         color: car.color,
-        modelId: car.modelId
+        modelId: car.modelId,
+        location: car.location
       })
+    })
+  }
+
+
+  getAllModels() {
+    this.modelService.getModels().subscribe((models)=>{
+      this.selectModels = models.map(model => ({ id: model.id, name: model.name }));
     })
   }
   
@@ -65,9 +87,15 @@ export class UpdateCarFormComponent implements OnInit{
       state: this.form.value.state,
       dailyPrice: this.form.value.dailyPrice,
       color: this.form.value.color,
-      modelId: this.form.value.modelId
+      modelId: this.form.value.modelId,
+      location: this.form.value.location
     }
+    console.log(request)
     this.carService.updateCarById(this.carId, request).subscribe({
+      error: (error)=>{
+        console.log("error ",error)
+        console.log(this.carId)
+      },
       complete: () => {
         this.formMessage.success = 'Car Update Successfully!';
         this.change.markForCheck();

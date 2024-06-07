@@ -4,5 +4,6 @@ export interface UpdateCarRequest{
     state: string,
     dailyPrice: number,
     color: string,
-    modelId: number
+    modelId: number,
+    location: string
 }
