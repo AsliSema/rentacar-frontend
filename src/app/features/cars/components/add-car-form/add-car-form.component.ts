@@ -9,6 +9,7 @@ import { FormMessage } from '../../../auths/components/login-form/login-form.com
 import { ModelListItemDto } from '../../../models/models/model-list-item-dto';
 import { ModelService } from '../../../models/services/model.service';
 import { GenericEntity } from '../../../../interfaces/genericEntity';
+import { CitiesService } from '../../../../shared/services/cities.service';
 
 
 
@@ -28,15 +29,14 @@ export class AddCarFormComponent implements OnInit{
   
   selectModels: GenericEntity[] = [{ id: null, name: null }];
 
-  citiesInTurkey: string[] = [
-    "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin","Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa","Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum","Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir","Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırklareli", "Kırşehir","Kilis", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir","Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak"
-  ];
+  citiesInTurkey: string[] = [];
 
 
   constructor (
     private formBuilder: FormBuilder,
     private carService: CarService,
     private modelService: ModelService,
+    private citiesService: CitiesService,
     private change: ChangeDetectorRef,
     private router: Router
   ){}
@@ -44,6 +44,7 @@ export class AddCarFormComponent implements OnInit{
   ngOnInit(): void {
     this.createForm();
     this.getAllModels();
+    this.citiesInTurkey = this.citiesService.getCities();
   }
 
   createForm(){

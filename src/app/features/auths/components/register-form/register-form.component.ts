@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { UserAddItemDto } from "../../../users/models/user-add-item-dto";
 import { AuthService } from "../../services/auth.service";
 import { FormMessage } from "../login-form/login-form.component";
+import { CitiesService } from "../../../../shared/services/cities.service";
 
 
 
@@ -22,20 +23,20 @@ export class RegisterFormComponent {
   form !: FormGroup
   formMessage: FormMessage = { success: null, error: null };
 
-  citiesInTurkey: string[] = [
-    "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin","Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa","Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum","Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir","Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırklareli", "Kırşehir","Kilis", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir","Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak"
-  ];
+  citiesInTurkey: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder, 
-    private authService: AuthService, 
+    private authService: AuthService,
+    private citiesService: CitiesService,  
     private change: ChangeDetectorRef,
     private router: Router
   ){}
 
 
   ngOnInit(): void {
-    this.createForm();
+    this.createForm();   
+    this.citiesInTurkey = this.citiesService.getCities();
   }
 
   createForm(){
