@@ -6,6 +6,10 @@ import { UpdateModelRequest } from '../../models/model-update-request.dto';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { FormMessage } from '../../../auths/components/login-form/login-form.component';
+import { GenericEntity } from '../../../../interfaces/genericEntity';
+import { BrandsService } from '../../../brands/services/brands.service';
+import { TransmissionsService } from '../../../transmissions/services/transmissions.service';
+import { FuelsService } from '../../../fuels/services/fuels.service';
 
 @Component({
   selector: 'app-update-model-form',
@@ -21,14 +25,21 @@ export class UpdateModelFormComponent implements OnInit{
   form !: FormGroup;
 
   formMessage: FormMessage = { success: null, error: null };
+
+  allBrands: GenericEntity[] = [{ id: null, name: null }];
+  allTransmissions: GenericEntity[] = [{ id: null, name: null }];
+  allFuels: GenericEntity[] = [{ id: null, name: null }];
   
 
-  constructor(private formBuilder: FormBuilder, private modelService: ModelService, private change: ChangeDetectorRef, private router: Router){}
+  constructor(private formBuilder: FormBuilder, private modelService: ModelService, private change: ChangeDetectorRef, private brandService: BrandsService, private transmissionService: TransmissionsService, private fuelService: FuelsService, private router: Router){}
 
 
   ngOnInit(): void {
     this.createFrom();
     this.getModel();
+    this.getAllBrands();
+    this.getAllTransmissions();
+    this.getAllFuels();
   }
 
   createFrom(){
@@ -54,6 +65,24 @@ export class UpdateModelFormComponent implements OnInit{
     })
   }
 
+
+  getAllBrands(){
+    this.brandService.getBrands().subscribe((brands)=>{
+      this.allBrands = brands.map(brand => ({ id: brand.id, name: brand.name }));
+    })
+  }
+
+  getAllTransmissions(){
+    this.transmissionService.getTransmissions().subscribe((transmissions) => {
+      this.allTransmissions = transmissions.map(transmission => ({id: transmission.id, name: transmission.name}));
+    })
+  }
+
+  getAllFuels(){
+    this.fuelService.getFuels().subscribe((fuels) => {
+      this.allFuels = fuels.map(fuel => ({id: fuel.id, name: fuel.name}))
+    })
+  }
 
   update() {
     const request: UpdateModelRequest = {
