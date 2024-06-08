@@ -4,7 +4,6 @@ export interface GetUserByIdResponse{
     lastName: string;
     email: string;
     password: string;
-    companyName: string;
     phoneNumber: string;
     identityNumber: string;
     city: string;

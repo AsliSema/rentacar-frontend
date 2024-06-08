@@ -15,7 +15,6 @@ export interface GetAllUserResponse {
     id?: number;
     firstName?: string;
     lastName?: string;
-    companyName?: string;
     createdDate?: string;
 }
 

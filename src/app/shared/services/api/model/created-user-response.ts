@@ -16,7 +16,6 @@ export interface CreatedUserResponse {
     firstName?: string;
     lastName?: string;
     email?: string;
-    companyName?: string;
     createdDate?: string;
 }
 

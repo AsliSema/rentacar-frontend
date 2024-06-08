@@ -44,7 +44,6 @@ export class AddUserFormComponent implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)]],
       confirmPassword: ['', [Validators.required]],
-      companyName: [''],
       phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       identityNumber: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       city: ['', [Validators.required]]
@@ -59,7 +58,6 @@ export class AddUserFormComponent implements OnInit{
       email: this.form.value.email,
       password: this.form.value.password,
       confirmPassword: this.form.value.confirmPassword,
-      companyName: this.form.value.companyName,
       phoneNumber: this.form.value.phoneNumber,
       identityNumber: this.form.value.identityNumber,
       city: this.form.value.city

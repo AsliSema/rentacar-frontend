@@ -16,6 +16,5 @@ export interface CreateUserRequest {
     lastName: string;
     email: string;
     password: string;
-    companyName: string;
 }
 
