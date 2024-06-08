@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { CarListItemDto } from '../models/car-list-item-dto';
 import { GetCarByIdResponse } from '../models/car-get-by-id-item.dto';
 import { UpdateCarRequest } from '../models/car-update-request.dto';
-import { UpdateCarResponse, UpdateModelResponse } from '../../../shared/services/api';
+import { UpdatedCarResponse } from '../models/car-updated-response.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +29,9 @@ export class CarService {
     return this.httpClient.get<GetCarByIdResponse>(url);
   }
 
-  updateCarById(id: number, request: UpdateCarRequest): Observable<UpdateModelResponse>{
+  updateCarById(id: number, request: UpdateCarRequest): Observable<UpdatedCarResponse>{
     const url =  `${this.controllerUrl}/${id}`; 
-    return this.httpClient.put<UpdateCarResponse>(url, request);
+    return this.httpClient.put<UpdatedCarResponse>(url, request);
   }
 
   deleteCarById(id: number): Observable<void>{
