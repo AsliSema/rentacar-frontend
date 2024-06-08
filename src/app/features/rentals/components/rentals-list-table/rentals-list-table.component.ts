@@ -29,4 +29,12 @@ export class RentalsListTableComponent {
     })
   }
 
+  deleteRental(rentalId: number){
+    this.rentalService.deleteRentalById(rentalId).subscribe({
+      complete: () => {
+        this.getRentalList();
+      }
+    })
+  }
+
 }

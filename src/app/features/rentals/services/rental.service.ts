@@ -40,4 +40,9 @@ export class RentalService {
     const url = `${this.controllerUrl}/user/${id}`;
     return this.httpClient.get<GetRentalsByUserId[]>(url);
   }
+
+  deleteRentalById(id: number): Observable<void>{
+    const url = `${this.controllerUrl}/${id}`; 
+    return this.httpClient.delete<void>(url); 
+  }
 }

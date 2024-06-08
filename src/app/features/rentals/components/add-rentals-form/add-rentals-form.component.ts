@@ -6,6 +6,9 @@ import { FormMessage } from '../../../auths/components/login-form/login-form.com
 import { Router } from '@angular/router';
 import { RentalService } from '../../services/rental.service';
 import { RentalAddItemDto } from '../../models/rental-add-item.dto';
+import { GenericEntity } from '../../../../interfaces/genericEntity';
+import { UserService } from '../../../users/services/user.service';
+import { CarService } from '../../../cars/services/car.service';
 
 @Component({
   selector: 'app-add-rentals-form',
@@ -19,17 +22,24 @@ export class AddRentalsFormComponent {
     form !: FormGroup
   
     formMessage: FormMessage = { success: null, error: null };
+
+    allUsers: GenericEntity[] = [{id: null, name: null}];
+    allCars:  GenericEntity[] = [{id: null, name: null}];
   
   
     constructor(
       private formBuilder: FormBuilder, 
       private rentalService: RentalService, 
+      private userService: UserService,
+      private carService: CarService,
       private change: ChangeDetectorRef,
       private router: Router
     ){}
   
     ngOnInit(): void {
       this.createForm();
+      this.getAllUsers();
+      this.getAllCars();
     }
   
     createForm(){
@@ -42,14 +52,12 @@ export class AddRentalsFormComponent {
     }
   
     add(){
-      //create gelmiyor service in içinden open-api-generator kullanınca
       const request: RentalAddItemDto = {
         carId: this.form.value.carId,
         startDate: this.form.value.startDate,
         endDate: this.form.value.endDate,
         userId: this.form.value.userId
       }
-      //const brand: BrandAddItemDto = this.form.value.name;
       this.rentalService.createRental(request).subscribe({
         next: (response) => {
           console.log(response)
@@ -69,6 +77,18 @@ export class AddRentalsFormComponent {
         }
       });
   
+    }
+
+    getAllUsers(){
+      this.userService.getUsers().subscribe((users)=>{
+        this.allUsers = users.map(user => ({ id: user.id, name: user.email }));
+      })
+    }
+
+    getAllCars(){
+      this.carService.getCars().subscribe((cars)=>{
+        this.allCars = cars.map(car => ({ id: car.id, name: car.modelName + " " + car.modelYear}));
+      })
     }
   
   

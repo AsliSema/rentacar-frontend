@@ -6,6 +6,9 @@ import { FormMessage } from '../../../auths/components/login-form/login-form.com
 import { RentalService } from '../../services/rental.service';
 import { Router } from '@angular/router';
 import { RentalUpdateRequestDto } from '../../models/rental-update-request.dto';
+import { GenericEntity } from '../../../../interfaces/genericEntity';
+import { UserService } from '../../../users/services/user.service';
+import { CarService } from '../../../cars/services/car.service';
 
 @Component({
   selector: 'app-update-rental-form',
@@ -23,12 +26,25 @@ export class UpdateRentalFormComponent {
   formMessage: FormMessage = { success: null, error: null };
 
 
-  constructor(private formBuilder: FormBuilder, private rentalService: RentalService, private change: ChangeDetectorRef, private router: Router){}
+  allUsers: GenericEntity[] = [{id: null, name: null}];
+  allCars:  GenericEntity[] = [{id: null, name: null}];
+
+
+  constructor(
+    private formBuilder: FormBuilder, 
+    private rentalService: RentalService, 
+    private userService: UserService,
+    private carService: CarService, 
+    private change: ChangeDetectorRef, 
+    private router: Router
+  ){}
 
 
   ngOnInit(): void {
     this.createFrom();
     this.getRental();
+    this.getAllUsers();
+    this.getAllCars();
   }
 
 
@@ -53,6 +69,17 @@ export class UpdateRentalFormComponent {
     })
   }
 
+  getAllUsers(){
+    this.userService.getUsers().subscribe((users)=>{
+      this.allUsers = users.map(user => ({ id: user.id, name: user.email }));
+    })
+  }
+
+  getAllCars(){
+    this.carService.getCars().subscribe((cars)=>{
+      this.allCars = cars.map(car => ({ id: car.id, name: car.modelName + " " + car.modelYear}));
+    })
+  }
 
   update() {
     const request: RentalUpdateRequestDto = {

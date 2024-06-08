@@ -22,15 +22,25 @@
                 <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
                     <div class="card-body my-3">
                         <div class="row mb-3 ">
-                            <label class="col-lg-4 col-form-label">Car Id</label>
+                            <label class="col-lg-4 col-form-label">Car Name</label>
                             <div class="col-lg-8">
-                                <input class="form-control" formControlName="carId" type="text" placeholder="Car Id">
+                                <select class="form-select form-control" formControlName="carId" aria-label="Default select example">
+                                    <option value="" selected>Select Car</option>
+                                    @for (car of allCars; track $index) {
+                                        <option [ngValue]="car.id">{{car.name}}</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-lg-4 col-form-label">User Id</label>
+                            <label class="col-lg-4 col-form-label">User Name</label>
                             <div class="col-lg-8">
-                                <input formControlName="userId" class="form-control" type="text" placeholder="User Id">
+                                <select class="form-select form-control" formControlName="userId" aria-label="Default select example">
+                                    <option value="" selected>Select User</option>
+                                    @for (user of allUsers; track $index) {
+                                        <option [ngValue]="user.id">{{user.name}}</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">

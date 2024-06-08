@@ -20,26 +20,36 @@
                 <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
                     <div class="card-body">
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Car Id</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" formControlName="carId" type="text" placeholder="Car Id">
+                            <label class="col-sm-3 col-form-label">Car Name</label>
+                            <div class="col-sm-9">
+                                <select class="form-select form-control" formControlName="carId" aria-label="Default select example">
+                                    <option value="" selected>Select Car</option>
+                                    @for (car of allCars; track $index) {
+                                        <option [ngValue]="car.id">{{car.name}}</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">User Id</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" formControlName="userId" type="text" placeholder="User Id">
+                            <label class="col-sm-3 col-form-label">User Email</label>
+                            <div class="col-sm-9">
+                                <select class="form-select form-control" formControlName="userId" aria-label="Default select example">
+                                    <option value="" selected>Select User</option>
+                                    @for (user of allUsers; track $index) {
+                                        <option [ngValue]="user.id">{{user.name}}</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Start Date</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Start Date</label>
+                            <div class="col-sm-9">
                                 <input class="form-control" formControlName="startDate" type="text" placeholder="2024-06-03">
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">End Date</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">End Date</label>
+                            <div class="col-sm-9">
                                 <input class="form-control" formControlName="endDate" type="text" placeholder="2024-06-07">
                             </div>
                         </div>

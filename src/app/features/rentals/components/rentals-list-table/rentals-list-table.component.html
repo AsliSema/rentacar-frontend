@@ -4,7 +4,8 @@
             <div class="card mt-5 mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="card-title">Rentals Table</h3>
-                    <app-button routerLink="/management/rentals/create" variant="primary" size="md" [outline]="true" [px]="5">Create Rental</app-button>
+                    <app-button routerLink="/management/rentals/create" variant="primary" size="md" [outline]="true"
+                        [px]="5">Create Rental</app-button>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
@@ -44,7 +45,10 @@
                                     <td>{{rental.totalPrice}}</td>
                                     <td>
                                         <div class="d-flex justify-content-end">
-                                            <app-button [routerLink]="['/management/rentals/update', rental.id]" variant="warning" size="sm" [outline]="true" [px]=3>Update</app-button>
+                                            <app-button [routerLink]="['/management/rentals/update', rental.id]"
+                                                variant="warning" size="sm" [outline]="true" [px]=4>Update</app-button>
+                                            <app-button class="ms-3" (click)="deleteRental(rental.id)" variant="danger"
+                                                size="sm" [outline]="true" [px]=4>Delete</app-button>
                                         </div>
                                     </td>
                                 </tr>
@@ -57,4 +61,3 @@
         </div>
     </div>
 </div>
-
