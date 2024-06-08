@@ -13,28 +13,6 @@ import { CarListItemDto } from '../../models/car-list-item-dto';
 })
 export class CarListBaseComponent implements OnInit{
 
-/*   cars !: CarListItemDto[];
-
-  constructor(protected carService: CarService, private change: ChangeDetectorRef){}
-
-  ngOnInit(): void {
-      this.getCarList();
-  }
-
-
-  getCarList(){
-    this.carService.getCars().subscribe((response)=>{
-      this.cars = response;
-
-      this.change.markForCheck()
-    })
-  } */
-
-
-
-
-
-
   @Input() initialSelectedCarId: number | null = null; 
   @Output() selectCar = new EventEmitter<CarListItemDto | null>();
 

@@ -20,32 +20,31 @@
                 <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
                     <div class="card-body">
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Model Name</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Model Name</label>
+                            <div class="col-sm-9">
                                 <select class="form-select form-control" formControlName="modelId" aria-label="Default select example">
                                     <option value="" selected>Select Model</option>
                                     @for (model of selectModels; track $index) {
                                         <option [ngValue]="model.id">{{model.name}}</option>
                                     }
-                                    </select>
+                                </select>
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Model Year</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Model Year</label>
+                            <div class="col-sm-9">
                                 <input class="form-control" formControlName="modelYear" type="text" placeholder="Model Year">
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Plate</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Plate</label>
+                            <div class="col-sm-9">
                                 <input class="form-control" formControlName="plate" type="text" placeholder="Plate">
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">State</label>
-                            <div class="col-sm-10">
-                                <!-- <input class="form-control" formControlName="state" type="text" placeholder="State"> -->
+                            <label class="col-sm-3 col-form-label">State</label>
+                            <div class="col-sm-9">
                                 <select class="form-select form-control" formControlName="state" aria-label="Default select example">
                                     <option value="" selected>Select State</option>
                                     <option>AVAILABLE</option>
@@ -55,37 +54,37 @@
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Daily Price</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Daily Price</label>
+                            <div class="col-sm-9">
                                 <input class="form-control" formControlName="dailyPrice" type="text" placeholder="Daily Price">
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Location</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Location</label>
+                            <div class="col-sm-9">
                                 <select class="form-select form-control" formControlName="location" aria-label="Default select example">
                                     <option selected>Select Location</option>
                                     @for (city of citiesInTurkey; track $index) {
                                         <option>{{city}}</option>
                                     }
-                                    </select>
+                                </select>
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Kilometer</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Kilometer</label>
+                            <div class="col-sm-9">
                                 <input class="form-control" formControlName="kilometer" type="text" placeholder="Kilometer">
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Color</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Color</label>
+                            <div class="col-sm-9">
                                 <input class="form-control" formControlName="color" type="text" placeholder="Color">
                             </div>
                         </div>
                         <div class="row m-3">
-                            <label class="col-sm-2 col-form-label">Image Url</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 col-form-label">Image Url</label>
+                            <div class="col-sm-9">
                                 <input class="form-control" formControlName="imagePath" type="text" placeholder="Image Url">
                             </div>
                         </div>

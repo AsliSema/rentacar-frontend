@@ -8,7 +8,7 @@ import { CarAddItemDto } from '../../models/car-add-item-dto';
 import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 import { ModelListItemDto } from '../../../models/models/model-list-item-dto';
 import { ModelService } from '../../../models/services/model.service';
-import { ModelInterface } from '../../../../interfaces/modelInterface';
+import { GenericEntity } from '../../../../interfaces/genericEntity';
 
 
 
@@ -26,7 +26,7 @@ export class AddCarFormComponent implements OnInit{
   formMessage: FormMessage = { success: null, error: null };
 
   
-  selectModels: ModelInterface[] = [{ id: null, name: null }];
+  selectModels: GenericEntity[] = [{ id: null, name: null }];
 
   citiesInTurkey: string[] = [
     "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin","Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa","Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum","Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir","Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırklareli", "Kırşehir","Kilis", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir","Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak"
@@ -96,7 +96,6 @@ export class AddCarFormComponent implements OnInit{
   getAllModels() {
     this.modelService.getModels().subscribe((models)=>{
       this.selectModels = models.map(model => ({ id: model.id, name: model.name }));
-      console.log("this.selectModels ", this.selectModels)
     })
   }
 

@@ -60,7 +60,6 @@
                             <label class="col-sm-4 col-form-label">Location</label>
                             <div class="col-sm-8">
                                 <select class="form-select form-control" formControlName="location" aria-label="Default select example">
-                                    <option value="" selected></option>
                                     @for (city of citiesInTurkey; track $index) {
                                         <option>{{city}}</option>
                                     }

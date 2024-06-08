@@ -6,7 +6,7 @@ import { CarService } from '../../services/car.service';
 import { Router } from '@angular/router';
 import { UpdateCarRequest } from '../../models/car-update-request.dto';
 import { FormMessage } from '../../../auths/components/login-form/login-form.component';
-import { ModelInterface } from '../../../../interfaces/modelInterface';
+import { GenericEntity } from '../../../../interfaces/genericEntity';
 import { ModelService } from '../../../models/services/model.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class UpdateCarFormComponent implements OnInit{
   formMessage: FormMessage = { success: null, error: null };
 
 
-  selectModels: ModelInterface[] = [{ id: null, name: null }];
+  selectModels: GenericEntity[] = [{ id: null, name: null }];
 
 
   citiesInTurkey: string[] = [
