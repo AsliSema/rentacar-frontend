@@ -89,7 +89,6 @@ export class UpdateCarFormComponent implements OnInit{
       modelId: this.form.value.modelId,
       location: this.form.value.location
     }
-    console.log(request)
     this.carService.updateCarById(this.carId, request).subscribe({
       error: (error)=>{
         console.log("error ",error)

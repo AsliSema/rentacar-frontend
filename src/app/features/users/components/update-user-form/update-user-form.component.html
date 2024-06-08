@@ -54,7 +54,12 @@
                         <div class="row mb-3">
                             <label class="col-sm-4 col-form-label">City</label>
                             <div class="col-sm-8">
-                                <input formControlName="city" class="form-control" type="text" placeholder="City">
+                                <select class="form-control form-select" formControlName="city" aria-label="Default select example">
+                                    <option value="" selected></option>
+                                    @for (city of citiesInTurkey; track $index) {
+                                        <option>{{city}}</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -78,13 +83,13 @@
                         <div class="row mb-3">
                             <label class="col-sm-4 col-form-label">Password</label>
                             <div class="col-sm-8">
-                                <input formControlName="pasword" class="form-control" type="password" placeholder="Password">
+                                <input formControlName="password" class="form-control" type="password" placeholder="Password">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-4 col-form-label">Confirm Password</label>
                             <div class="col-sm-8">
-                                <input formControlName="confimPassword" class="form-control" type="password" placeholder="Confirm Password">
+                                <input formControlName="confirmPassword" class="form-control" type="password" placeholder="Confirm Password">
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { UpdateUserRequest } from '../../models/user-update-request.dto';
-import { GetUserByIdResponse } from '../../models/get-user-by-id-response-dto';
 import { FormMessage } from '../../../auths/components/login-form/login-form.component';
 
 @Component({
@@ -23,6 +22,10 @@ export class UpdateUserFormComponent implements OnInit{
 
   formMessage: FormMessage = { success: null, error: null };
 
+
+  citiesInTurkey: string[] = [
+    "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin","Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa","Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum","Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir","Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırklareli", "Kırşehir","Kilis", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir","Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak"
+  ];
 
   constructor(
     private formBuilder: FormBuilder, private userService: UserService, private change: ChangeDetectorRef, private router: Router
@@ -53,8 +56,6 @@ export class UpdateUserFormComponent implements OnInit{
 
   getUser(){
     this.userService.getUserById(this.userId).subscribe((user)=>{
-      console.log(user.issueDate)
-      console.log(user)
       this.form.patchValue({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -64,7 +65,7 @@ export class UpdateUserFormComponent implements OnInit{
         identityNumber: user.identityNumber,
         city: user.city,
         licenseNumber: user.licenseNumber,
-        issueDate: user.issueDate,  //does not work
+        issueDate: user.issueDate, 
         licenseClass: user.licenseClass
       })
     })
