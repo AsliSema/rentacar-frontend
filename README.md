@@ -94,7 +94,7 @@ To contribute to this project, you can follow these steps:
 1. Clone the repository
 2. Install dependencies: `npm install`
 3. Run the application: `npm start`
-4. Clone the backend repository: 🔗 [You can reach here](https://github.com/AsliSema/rentacar-backend)
+4. Clone the backend repository: 🔗 [Click here](https://github.com/AsliSema/rentacar-backend)
 
 <br />
 
