@@ -84,8 +84,12 @@ I began the project design phase by creating an Entity-Relationship Diagram (ERD
 
 Here's a simplified representation of ERD design:
 <br />
-🔗 [Database design](https://app.diagrams.net/#G19LXQtdgKsAUKVzkn-tGd3mKh4j6150ZU#%7B%22pageId%22%3A%228maZeWQhW6xMATc8ixxi%22%7D)  
 
+<div align="center">
+  <img src="https://github.com/AsliSema/rentacar-frontend/assets/85573321/83b0bed1-98af-47b9-b234-09343b0635dc" alt="Database Design" width="800" height="auto">
+</div>
+
+<br />
 
 ## ➡️ Functionality
 
@@ -98,7 +102,7 @@ To contribute to this project, you can follow these steps:
 
 <br />
 
-## Contributing
+## ➡️ Contributing
 
 I welcome contributions from the community! Feel free to submit issues and pull requests.
 
